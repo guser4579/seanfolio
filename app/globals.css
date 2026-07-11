@@ -32,7 +32,10 @@ body {
   margin: 0; background: var(--paper); color: var(--body);
   font-family: var(--sans); font-size: 14px; line-height: 20px;
   -webkit-font-smoothing: antialiased;
+  /* sticky footer on short pages: body is a column, main stretches */
+  min-height: 100vh; display: flex; flex-direction: column;
 }
+main { flex: 1 1 auto; }
 
 a:focus-visible, button:focus-visible, input:focus-visible {
   outline: 2px solid var(--title); outline-offset: 2px;
@@ -53,7 +56,8 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 /* ---------- header ---------- */
 header.site { position: sticky; top: 0; z-index: 50; background: var(--paper); }
 .bar { border-bottom: 1px solid var(--line); }
-.bar-inner { max-width: 1040px; margin: 0 auto; padding: 10px 16px; }
+/* full-width bars: 16px gutters at every screen size */
+.bar-inner { padding: 10px 16px; }
 .wordmark { font-weight: 600; color: var(--body); text-decoration: none; font-size: 14px; }
 nav.sub { display: flex; gap: 18px; }
 nav.sub a, nav.sub button {
@@ -61,7 +65,7 @@ nav.sub a, nav.sub button {
   font: inherit; background: none; border: 0; padding: 0; cursor: pointer;
 }
 nav.sub a:hover, nav.sub button:hover { color: var(--title); }
-nav.sub .current { color: var(--body); }
+nav.sub .current { color: var(--body); font-weight: 600; } /* matches wordmark weight */
 
 /* ---------- layout columns ---------- */
 /* 40px header→content; 200px content→footer (global rule) */
@@ -298,7 +302,7 @@ li.job { padding: 12px 0 14px; }
 /* ---------- footer ---------- */
 footer.site-foot { border-top: 1px solid var(--line); }
 .foot-inner {
-  max-width: 1040px; margin: 0 auto; padding: 14px 16px;
+  padding: 14px 16px; /* full-width: 16px gutters at every screen size */
   display: flex; justify-content: space-between; align-items: baseline;
   flex-wrap: wrap; gap: 8px 24px; font-size: 14px;
 }
