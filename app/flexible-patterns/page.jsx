@@ -17,7 +17,7 @@ export default async function Page({ searchParams }) {
   return (
     <main id="main" className="study">
       <h1>Flexible design patterns are best for an uncertain future</h1>
-      <p className="meta-line">New Product • Case Study • 2026</p>
+      <p className="meta-line">New Product â¢ Case Study â¢ 2026</p>
 
       <Facts
         items={[
@@ -77,9 +77,9 @@ export default async function Page({ searchParams }) {
         early on become liabilities as requirements shift.
       </p>
       <p>
-        The goal was not to prematurely optimize for a fully mature system, but
-        to establish a foundation that could evolve as real usage patterns
-        emerged.
+        With PetClear, the goal was not to prematurely optimize for a fully
+        mature system, but rather to establish a foundation that could evolve
+        as real usage patterns emerged.
       </p>
 
       <h3>Starting Simple</h3>
@@ -87,7 +87,8 @@ export default async function Page({ searchParams }) {
         PetClear initially launched as a read-only information organizer. Its
         primary function was to request animal-related information from
         applicants and synchronize that data with a property's existing
-        property management system (PMS).
+        property management system (PMS) - it is hard to start more simple
+        than that.
       </p>
 
       <Fig
@@ -96,6 +97,42 @@ export default async function Page({ searchParams }) {
       />
 
       <h3>Absorbing New Requirements</h3>
+      <p>
+        A glorified information repository was going to satisfy customers only
+        momentarily.
+      </p>
+      <p>
+        It was not long after going to market that we understood with more
+        precision where this product should go, and what could be built on the
+        foundation of its initial patterns.
+      </p>
+      <p>
+        The value proposition was deliberate: the centralization and
+        organization of information, not recommendation. Foxen delivers
+        reliable information. Leasing offices make the eligibility judgments.
+        That line shields Foxen from legal culpability, and nothing we built
+        crosses it.
+      </p>
+      <p>
+        Even still, customers needed analysis. We would stay out of the
+        business of approval and denial, but the market told us it was time to
+        deliver more valuable information to property managers, and more tools
+        to act on it.
+      </p>
+      <ul>
+        <li>AI analyzes every ESA letter on arrival.</li>
+        <li>AI analyzes vaccination documentation.</li>
+        <li>Property managers can request additional information from an applicant.</li>
+        <li>Property managers can request additional documentation.</li>
+        <li>
+          The system prompts residents to keep their documentation current on
+          behalf of the property, without its involvement.
+        </li>
+      </ul>
+      <p>
+        The goal became building an analysis layer on top of the information
+        organization and transmission layer we had already established.
+      </p>
       <p>
         Upon opening an application, the system immediately communicates the
         number of exceptions present. Rather than redirecting users into a
@@ -108,28 +145,46 @@ export default async function Page({ searchParams }) {
         caption="expandable in-line exception banners"
       />
 
+      <p>
+        Every feature above shipped inside the patterns established at launch.
+        The patterns held.
+      </p>
+
       <Band label="Filmstrip of PetClear screens" />
 
-      <h2>Bearing the Weight of What Came Next</h2>
+      <h2>The Graceful Expansion of Scope</h2>
       <p>
-        PetClear was built as an animal information solicitor, analyzer, and
-        processor. Its patterns were built to hold more than animals.
+        PetClear's immediate success in the market was all the validation we
+        needed to confirm the next step.
       </p>
       <p>
-        Applications were housed in tabs from the very first iteration. At the
-        time, animal information was the only tab an application would hold.
-        The bet was that an application would one day hold anything that paints
-        the picture of an applicant's eligibility for tenancy.
+        An applicant's animal designation is one point of consideration among
+        many when a property weighs someone for tenancy. Background checks,
+        income verification, and credit checks are additional points of
+        screening that must be collected, analyzed, and delivered so the best
+        judgment can be made.
       </p>
       <p>
-        Eighteen months later, Foxen elected to expand into additional forms of
-        applicant screening - background checks and income verification.
+        This stood as the obvious place to build what comes next for Foxen: a
+        full-suite screening experience, with PetClear as one screening point
+        among many.
       </p>
-      <p>The patterns held.</p>
       <p>
-        Each new screener type arrives as a new tab, not a new product. No
-        overhaul was required. No rework was performed. The system absorbed the
-        new weight, as it was designed to.
+        The direction is chosen. The designs are final, and they have been
+        reviewed with our board and with prospects. The technical underpinnings
+        are being built now. Inside Fox Den, the portal our property managers
+        live in, screening becomes an actual workstation.
+      </p>
+      <p>
+        None of this requires a rebuild. Applications were housed in tabs from
+        the very first iteration, back when animal information was the only tab
+        an application would hold. The bet was that an application would one
+        day hold anything that paints the picture of an applicant's eligibility
+        for tenancy. Each new screener arrives as a new tab, not a new product.
+      </p>
+      <p>
+        This may have always been the direction we were headed. The ease of
+        getting there is because we designed with future optionality in mind.
       </p>
 
       <Fig
@@ -139,16 +194,11 @@ export default async function Page({ searchParams }) {
 
       <h2>Outcome</h2>
       <p>
-        The patterns established at launch were simple enough to absorb
-        exception states, recourse actions, and entirely new screening types
-        without rework.
-      </p>
-      <p>
-        The product reads as though it was always one piece of a larger
-        screening platform, not a product a year older than the rest of it.
+        PetClear reads as though it was always one piece of a larger screening
+        platform, not a product a year older than the rest of it.
       </p>
       <p className="formula">
-        $4M+ in first-year bookings • ~7% of total company revenue • Foxen's
+        $4M+ in first-year bookings â¢ ~7% of total company revenue â¢ Foxen's
         fastest-growing product.
       </p>
 
