@@ -181,6 +181,9 @@ li.job { padding: 12px 0 14px; }
 .study h3 { font-size: 14px; line-height: 20px; font-weight: 600; color: var(--body); margin: 24px 0 0; }
 .study h3 + p { margin-top: 8px; }
 .study p { margin: 14px 0 0; }
+.study ul { margin: 14px 0 0; padding-left: 20px; }
+.study li { margin-top: 6px; }
+.study li::marker { color: var(--muted); }
 .formula { font-style: italic; color: var(--muted); }
 
 .band {
