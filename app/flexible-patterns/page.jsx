@@ -17,7 +17,7 @@ export default async function Page({ searchParams }) {
   return (
     <main id="main" className="study">
       <h1>Flexible design patterns are best for an uncertain future</h1>
-      <p className="meta-line">New Product â¢ Case Study â¢ 2026</p>
+      <p className="meta-line">New Product • Case Study • 2026</p>
 
       <Facts
         items={[
@@ -198,7 +198,7 @@ export default async function Page({ searchParams }) {
         platform, not a product a year older than the rest of it.
       </p>
       <p className="formula">
-        $4M+ in first-year bookings â¢ ~7% of total company revenue â¢ Foxen's
+        $4M+ in first-year bookings • ~7% of total company revenue • Foxen's
         fastest-growing product.
       </p>
 
