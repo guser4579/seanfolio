@@ -79,6 +79,8 @@ main.center {
 /* ---------- section heading w/ accent bar (home) ---------- */
 .sect { margin-top: 56px; }
 .sect:first-child { margin-top: 0; }
+/* dashed section divider: 56px above (own margin) + 56px below (next .sect margin) */
+hr.divider { border: 0; border-top: 1px dashed var(--line); margin: 56px 0 0; }
 h1.head, h2.head {
   display: flex; align-items: center; gap: 10px;
   font-size: 18px; line-height: 24px; font-weight: 600; color: var(--body);
