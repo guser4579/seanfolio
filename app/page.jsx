@@ -72,10 +72,12 @@ export default function Home() {
         </ul>
       </section>
 
+      <hr className="divider" aria-hidden="true" />
+
       <section className="sect" aria-labelledby="jobs-h">
         <h2 className="head" id="jobs-h">
           <span className="accent gray" aria-hidden="true" />
-          past employment
+          work history
         </h2>
         <ul className="list">
           {JOBS.map((j) => (
