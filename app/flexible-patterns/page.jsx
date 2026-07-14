@@ -107,17 +107,10 @@ export default async function Page({ searchParams }) {
         foundation of its initial patterns.
       </p>
       <p>
-        The value proposition was deliberate: the centralization and
-        organization of information, not recommendation. Foxen delivers
-        reliable information. Leasing offices make the eligibility judgments.
-        That line shields Foxen from legal culpability, and nothing we built
-        crosses it.
-      </p>
-      <p>
-        Even still, customers needed analysis. We would stay out of the
-        business of approval and denial, but the market told us it was time to
-        deliver more valuable information to property managers, and more tools
-        to act on it.
+        Customers needed analysis. Foxen would stay out of the business of
+        approving and denying applicants, but it was time to deliver more
+        valuable information to property managers, and more tools to act on
+        it.
       </p>
       <ul>
         <li>AI analyzes every ESA letter on arrival.</li>
@@ -133,22 +126,10 @@ export default async function Page({ searchParams }) {
         The goal became building an analysis layer on top of the information
         organization and transmission layer we had already established.
       </p>
-      <p>
-        Upon opening an application, the system immediately communicates the
-        number of exceptions present. Rather than redirecting users into a
-        separate review flow, exceptions are expressed directly within the
-        application using expandable in-line banners.
-      </p>
-
       <Fig
         ph="framed screenshot - in-line exception banner, weight-limit exceeded"
         caption="expandable in-line exception banners"
       />
-
-      <p>
-        Every feature above shipped inside the patterns established at launch.
-        The patterns held.
-      </p>
 
       <Band label="Filmstrip of PetClear screens" />
 
@@ -169,24 +150,6 @@ export default async function Page({ searchParams }) {
         full-suite screening experience, with PetClear as one screening point
         among many.
       </p>
-      <p>
-        The direction is chosen. The designs are final, and they have been
-        reviewed with our board and with prospects. The technical underpinnings
-        are being built now. Inside Fox Den, the portal our property managers
-        live in, screening becomes an actual workstation.
-      </p>
-      <p>
-        None of this requires a rebuild. Applications were housed in tabs from
-        the very first iteration, back when animal information was the only tab
-        an application would hold. The bet was that an application would one
-        day hold anything that paints the picture of an applicant's eligibility
-        for tenancy. Each new screener arrives as a new tab, not a new product.
-      </p>
-      <p>
-        This may have always been the direction we were headed. The ease of
-        getting there is because we designed with future optionality in mind.
-      </p>
-
       <Fig
         ph="framed screenshot - application with animal, background, and income screener tabs"
         caption="one application, many screeners"
