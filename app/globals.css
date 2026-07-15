@@ -60,7 +60,7 @@
 }
 
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; background: var(--paper); }
+html { -webkit-text-size-adjust: 100%; background: var(--paper); overflow-x: clip; }
 body {
   margin: 0; background: var(--paper); color: var(--body);
   font-family: var(--sans); font-size: 14px; line-height: 20px;
