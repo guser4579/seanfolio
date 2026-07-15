@@ -1,13 +1,13 @@
-/* ============================================================
+/* =========================================================
    seanfolio — global styles
    Design system extracted from seanforquer.com (locked concepts).
    Spacing rules: 40px header→content, 200px content→footer,
    every gap set in exactly one place.
    ============================================================ */
 :root {
-  --title:   #101112;
+  --title:  #101112;
   --body:    #333333;
-  --muted:   #6C7581;
+  --muted:   #6A6E7B;
   --card:    #FAFAFB;
   --line:    #EAEBEF;
   --band:    #F5F6F8;
@@ -24,18 +24,51 @@
 
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu,
           Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+
+  /* component + theme tokens */
+  --btn-bg: #000000;
+  --btn-fg: #FFFFFF;
+  --btn-bg-hover: #101112;
+  --thesis-border: #000000;
+  color-scheme: light;
+}
+
+/* ---------- dark theme (dimmed reading-paper; WCAG 2.1 AA verified) ---------- */
+[data-theme="dark"] {
+  --title:   #F2F3F5;
+  --body:    #DEE1E7;
+  --muted:   #9BA1AD;
+  --card:    #1F222A;
+  --line:    #2C303A;
+  --band:    #1A1D24;
+  --paper:   #16181D;
+
+  --red:     #FF6166;
+  --blue:    #4DA3FF;
+  --teal:    #2FD6C2;
+  --gray:    #9BA1AD;
+  --amber:   #E0B24A;
+  --green:   #3BD277;
+  --link:    #8CB8FF;
+  --error:   #F3A9A2;
+
+  --btn-bg: #F2F3F5;
+  --btn-fg: #16181D;
+  --btn-bg-hover: #E4E6EA;
+  --thesis-border: #F2F3F5;
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; background: var(--paper); }
 body {
   margin: 0; background: var(--paper); color: var(--body);
   font-family: var(--sans); font-size: 14px; line-height: 20px;
   -webkit-font-smoothing: antialiased;
-  /* sticky footer on short pages: body is a column, main stretches */
-  min-height: 100vh; display: flex; flex-direction: column;
 }
-main { flex: 1 1 auto; }
+@media (prefers-reduced-motion: no-preference) {
+  body { transition: background .2s ease, color .2s ease; }
+}
 
 a:focus-visible, button:focus-visible, input:focus-visible {
   outline: 2px solid var(--title); outline-offset: 2px;
@@ -43,7 +76,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 .skip {
   position: absolute; left: -999px; top: 0; z-index: 100;
-  background: var(--title); color: #fff; padding: 8px 12px;
+  background: var(--title); color: var(--paper); padding: 8px 12px;
   font-size: 13px; text-decoration: none;
 }
 .skip:focus { left: 8px; top: 8px; }
@@ -56,8 +89,10 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 /* ---------- header ---------- */
 header.site { position: sticky; top: 0; z-index: 50; background: var(--paper); }
 .bar { border-bottom: 1px solid var(--line); }
-/* full-width bars: 16px gutters at every screen size */
-.bar-inner { padding: 10px 16px; }
+.bar-inner {
+  max-width: 1040px; margin: 0 auto; padding: 10px 16px;
+  display: flex; align-items: center; justify-content: space-between;
+}
 .wordmark { font-weight: 600; color: var(--body); text-decoration: none; font-size: 14px; }
 nav.sub { display: flex; gap: 18px; }
 nav.sub a, nav.sub button {
@@ -65,7 +100,20 @@ nav.sub a, nav.sub button {
   font: inherit; background: none; border: 0; padding: 0; cursor: pointer;
 }
 nav.sub a:hover, nav.sub button:hover { color: var(--title); }
-nav.sub .current { color: var(--body); font-weight: 600; } /* matches wordmark weight */
+nav.sub .current { color: var(--body); }
+
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; margin: -7px -8px -7px 0;
+  border: 0; background: none; cursor: pointer; color: var(--muted);
+  border-radius: 999px;
+}
+.theme-toggle:hover { color: var(--title); }
+.theme-toggle svg { width: 20px; height: 20px; display: block; }
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
 /* ---------- layout columns ---------- */
 /* 40px header→content; 200px content→footer (global rule) */
@@ -79,8 +127,6 @@ main.center {
 /* ---------- section heading w/ accent bar (home) ---------- */
 .sect { margin-top: 56px; }
 .sect:first-child { margin-top: 0; }
-/* dashed section divider: 56px above (own margin) + 56px below (next .sect margin) */
-hr.divider { border: 0; border-top: 1px dashed var(--line); margin: 56px 0 0; }
 h1.head, h2.head {
   display: flex; align-items: center; gap: 10px;
   font-size: 18px; line-height: 24px; font-weight: 600; color: var(--body);
@@ -171,7 +217,7 @@ li.job { padding: 12px 0 14px; }
 
 .thesis {
   margin: 32px 0; padding: 2px 0 2px 20px;
-  border-left: 5px solid #000;
+  border-left: 5px solid var(--thesis-border);
   color: var(--muted); font-size: 17px; line-height: 26px;
 }
 
@@ -183,9 +229,6 @@ li.job { padding: 12px 0 14px; }
 .study h3 { font-size: 14px; line-height: 20px; font-weight: 600; color: var(--body); margin: 24px 0 0; }
 .study h3 + p { margin-top: 8px; }
 .study p { margin: 14px 0 0; }
-.study ul { margin: 14px 0 0; padding-left: 20px; }
-.study li { margin-top: 6px; }
-.study li::marker { color: var(--muted); }
 .formula { font-style: italic; color: var(--muted); }
 
 .band {
@@ -221,12 +264,12 @@ li.job { padding: 12px 0 14px; }
 .gate .submit {
   display: block; width: 100%;
   margin-top: 40px;
-  font: inherit; font-weight: 600; color: #fff;
-  background: #000; border: 0; border-radius: 14px;
+  font: inherit; font-weight: 600; color: var(--btn-fg);
+  background: var(--btn-bg); border: 0; border-radius: 14px;
   padding: 10px 16px; /* 40px total height */
   cursor: pointer;
 }
-.gate .submit:hover { background: var(--title); }
+.gate .submit:hover { background: var(--btn-bg-hover); }
 .gate .err { margin: 10px 0 0; color: var(--error); }
 
 /* ---------- thought piece ---------- */
@@ -284,7 +327,7 @@ li.job { padding: 12px 0 14px; }
 }
 .modal h2 { font-size: 20px; line-height: 28px; font-weight: 600; color: var(--title); margin: 0 0 8px; }
 .modal .intro { margin: 0 0 20px; }
-.rows { display: flex; flex-direction: column; gap: 16px; } /* exactly 16px between rows */
+.rows { display: flex; flex-direction: column; gap: 16px; }
 .row { display: flex; align-items: center; gap: 12px; padding: 0; }
 .row .icon { flex-shrink: 0; width: 20px; height: 20px; color: var(--muted); }
 .row .label { color: var(--muted); }
@@ -293,13 +336,13 @@ li.job { padding: 12px 0 14px; }
 .row a.value.plain { color: var(--title); text-decoration: none; }
 .modal .close-btn {
   display: block; width: 100%;
-  font: inherit; font-weight: 600; color: #fff;
-  background: #000; border: 0; border-radius: 16px;
+  font: inherit; font-weight: 600; color: var(--btn-fg);
+  background: var(--btn-bg); border: 0; border-radius: 16px;
   padding: 10px 16px; /* 40px total height, matches gate submit */
   cursor: pointer;
   margin-top: 80px; /* location row bottom → close top */
 }
-.modal .close-btn:hover { background: var(--title); }
+.modal .close-btn:hover { background: var(--btn-bg-hover); }
 @media (max-width: 639px) {
   .modal .close-btn { margin-top: auto; } /* pinned to bottom on mobile */
 }
@@ -307,7 +350,7 @@ li.job { padding: 12px 0 14px; }
 /* ---------- footer ---------- */
 footer.site-foot { border-top: 1px solid var(--line); }
 .foot-inner {
-  padding: 14px 16px; /* full-width: 16px gutters at every screen size */
+  max-width: 1040px; margin: 0 auto; padding: 14px 16px;
   display: flex; justify-content: space-between; align-items: baseline;
   flex-wrap: wrap; gap: 8px 24px; font-size: 14px;
 }
@@ -324,9 +367,9 @@ footer.site-foot { border-top: 1px solid var(--line); }
   .pulse { animation: pulse 2s ease-out infinite; }
 }
 @keyframes pulse {
-  0%   { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.45); }
-  70%  { box-shadow: 0 0 0 7px rgba(34, 197, 94, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--green) 45%, transparent); }
+  70%  { box-shadow: 0 0 0 7px color-mix(in srgb, var(--green) 0%, transparent); }
+  100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--green) 0%, transparent); }
 }
 
 @media (max-width: 480px) {
