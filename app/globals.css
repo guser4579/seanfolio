@@ -244,6 +244,11 @@ li.job { padding: 12px 0 14px; }
   width: 100vw; margin: 40px 0 0 calc(50% - 50vw);
   background: var(--band); padding: 32px 0;
 }
+
+@media (max-width: 680px) {
+  /* mobile: bleed to the screen edges with fixed -16px margins instead of 100vw (100vw overflows iOS) */
+  .band { width: auto; margin-left: -16px; margin-right: -16px; }
+}
 .strip {
   display: flex; gap: 24px; overflow-x: auto; padding: 0 32px;
   scrollbar-width: thin;
