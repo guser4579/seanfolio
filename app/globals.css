@@ -67,6 +67,7 @@ body {
   -webkit-font-smoothing: antialiased;
   /* sticky footer on short pages: body is a column, main stretches */
   min-height: 100vh; display: flex; flex-direction: column;
+  overflow-x: clip; /* contain intentional .band (100vw) full-bleed; clip keeps sticky header + vertical scroll */
 }
 @media (prefers-reduced-motion: no-preference) {
   body { transition: background .2s ease, color .2s ease; }
