@@ -1,24 +1,18 @@
 import { WORK } from '../lib/data';
-import { Facts } from './Study';
-import ShareButton from './ShareButton';
+import { MetaRow, HeroFoot } from './Hero';
 
 export default function StudyHero({ slug }) {
   const item = WORK.find((w) => w.slug === slug);
   if (!item) return null;
   return (
-    <>
+    <div className="article-hero">
       <h1>{item.title}</h1>
-      <div className="meta-row">
-        <p className="meta-line">{item.meta}</p>
-        <ShareButton title={item.title} />
-      </div>
-      <Facts
-        items={[
-          ['Company', item.company],
-          ['Role', item.role],
-          ['Year', item.year],
-        ]}
+      <MetaRow
+        className="hero-primary"
+        emphasize
+        items={[item.outcome, item.role, item.company]}
       />
-    </>
+      <HeroFoot readTime={item.readTime} date={item.year} title={item.title} />
+    </div>
   );
 }

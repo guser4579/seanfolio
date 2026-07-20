@@ -1,26 +1,14 @@
-import ShareButton from '../../../components/ShareButton';
+import ThoughtHero from '../../../components/ThoughtHero';
 
 export const metadata = { title: 'On a post-literate society' };
 
 export default function Page() {
   return (
     <main id="main" className="col piece">
-      <h1>On a post-literate society</h1>
-      <p className="lede">
-        The residue of a long conversation, prompted by Marriott's argument
-        that literacy is more than decoding written language.
-      </p>
-      <div className="meta-row">
-        <p className="meta-line">
-          <span>
-            <span className="dot growing" aria-hidden="true" />
-            written with AI
-          </span>
-          <span aria-hidden="true">•</span>
-          <span>july 2026</span>
-        </p>
-        <ShareButton title="On a post-literate society" />
-      </div>
+      <ThoughtHero
+        slug="post-literacy"
+        lede="The residue of a long conversation, prompted by Marriott's argument that literacy is more than decoding written language."
+      />
 
       <h2>Summary</h2>
       <p>

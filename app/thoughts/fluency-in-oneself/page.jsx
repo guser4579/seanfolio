@@ -1,4 +1,4 @@
-import ShareButton from '../../../components/ShareButton';
+import ThoughtHero from '../../../components/ThoughtHero';
 
 export const metadata = {
   title: "I stopped searching for life's answers and accidentally found all of them",
@@ -7,25 +7,10 @@ export const metadata = {
 export default function Page() {
   return (
     <main id="main" className="col piece">
-      <h1>
-        I stopped searching for life's answers and accidentally found all of
-        them
-      </h1>
-      <p className="lede">
-        An artifact from the pursuit of a fluency in myself. I expect to
-        disagree with parts of it later. That is the point.
-      </p>
-      <div className="meta-row">
-        <p className="meta-line">
-          <span>
-            <span className="dot evergreen" aria-hidden="true" />
-            written by hand
-          </span>
-          <span aria-hidden="true">•</span>
-          <span>june 2026</span>
-        </p>
-        <ShareButton title="I stopped searching for life's answers and accidentally found all of them" />
-      </div>
+      <ThoughtHero
+        slug="fluency-in-oneself"
+        lede="An artifact from the pursuit of a fluency in myself. I expect to disagree with parts of it later. That is the point."
+      />
 
       <h2>A Life Only Considered Isn't One Lived</h2>
       <p>

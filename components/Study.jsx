@@ -1,16 +1,3 @@
-export function Facts({ items }) {
-  return (
-    <dl className="facts">
-      {items.map(([dt, dd]) => (
-        <div key={dt}>
-          <dt>{dt}</dt>
-          <dd>{dd}</dd>
-        </div>
-      ))}
-    </dl>
-  );
-}
-
 export function Thesis({ children }) {
   return <blockquote className="thesis">{children}</blockquote>;
 }
