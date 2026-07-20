@@ -1,6 +1,7 @@
 import Gate from '../../components/Gate';
 import { gateOpen } from '../../lib/gate';
-import { Facts, Thesis, Fig, Band } from '../../components/Study';
+import { Thesis, Fig, Band } from '../../components/Study';
+import StudyHero from '../../components/StudyHero';
 
 export const metadata = {
   title: 'Flexible design patterns are best for an uncertain future',
@@ -16,16 +17,7 @@ export default async function Page({ searchParams }) {
 
   return (
     <main id="main" className="study">
-      <h1>Flexible design patterns are best for an uncertain future</h1>
-      <p className="meta-line">New Product • Case Study • 2026</p>
-
-      <Facts
-        items={[
-          ['Company', 'Foxen'],
-          ['Role', 'Sole Product Designer'],
-          ['Year', '2025 - 2026'],
-        ]}
-      />
+      <StudyHero slug="flexible-patterns" />
 
       <Fig ph="hero media - PetClear brand image" phClass="hero" />
 

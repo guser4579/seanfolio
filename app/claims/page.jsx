@@ -1,6 +1,7 @@
 import Gate from '../../components/Gate';
 import { gateOpen } from '../../lib/gate';
 import { Fig, Band } from '../../components/Study';
+import StudyHero from '../../components/StudyHero';
 
 export const metadata = {
   title: 'Creating a claims process that prevents errors and increases confidence',
@@ -14,10 +15,7 @@ export default async function Page({ searchParams }) {
 
   return (
     <main id="main" className="study">
-      <h1>
-        Creating a claims process that prevents errors and increases confidence
-      </h1>
-      <p className="meta-line">$650k in savings • Case Study • 2025</p>
+      <StudyHero slug="claims" />
 
       <Fig ph="hero media - claims experience overview" phClass="hero" />
 

@@ -1,3 +1,5 @@
+import ShareButton from '../../../components/ShareButton';
+
 export const metadata = { title: 'On a post-literate society' };
 
 export default function Page() {
@@ -8,14 +10,17 @@ export default function Page() {
         The residue of a long conversation, prompted by Marriott's argument
         that literacy is more than decoding written language.
       </p>
-      <p className="meta-line">
-        <span>
-          <span className="dot growing" aria-hidden="true" />
-          written with AI
-        </span>
-        <span aria-hidden="true">•</span>
-        <span>july 2026</span>
-      </p>
+      <div className="meta-row">
+        <p className="meta-line">
+          <span>
+            <span className="dot growing" aria-hidden="true" />
+            written with AI
+          </span>
+          <span aria-hidden="true">•</span>
+          <span>july 2026</span>
+        </p>
+        <ShareButton title="On a post-literate society" />
+      </div>
 
       <h2>Summary</h2>
       <p>

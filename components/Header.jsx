@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { EMAIL, LINKEDIN_URL, RESUME_URL } from '../lib/data';
 
-const BACK_ROUTES = ['/flexible-patterns', '/change', '/claims', '/coi', '/thoughts/'];
+const BACK_ROUTES = ['/flexible-patterns', '/claims', '/coi', '/thoughts/'];
 
 export default function Header() {
   const pathname = usePathname() || '/';

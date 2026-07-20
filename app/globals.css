@@ -194,6 +194,18 @@ li.job { padding: 12px 0 14px; }
 /* ---------- case study ---------- */
 .study h1 { font-size: 20px; line-height: 28px; font-weight: 600; color: var(--title); margin: 0 0 4px; }
 .study .meta-line { color: var(--muted); margin: 0; }
+
+/* meta-line + share on one row */
+.meta-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.share {
+  display: inline-flex; align-items: center; gap: 7px; flex-shrink: 0;
+  background: none; border: 0; padding: 4px 0; margin: 0; cursor: pointer;
+  color: var(--muted); font-weight: 500; font-size: 14px; line-height: 20px;
+  font-family: inherit;
+}
+.share:hover { color: var(--title); }
+.share svg { width: 16px; height: 16px; display: block; }
+
 .facts {
   display: flex; flex-wrap: wrap; gap: 8px 40px;
   margin: 20px 0 0; padding: 14px 0;
@@ -289,9 +301,10 @@ li.job { padding: 12px 0 14px; }
 /* ---------- thought piece ---------- */
 .piece h1 { font-size: 20px; line-height: 28px; font-weight: 600; color: var(--title); margin: 0 0 8px; }
 .piece .lede { color: var(--muted); margin: 0 0 12px; }
+.piece .meta-row { margin: 0 0 36px; }
 .piece .meta-line {
   display: flex; align-items: center; flex-wrap: wrap; gap: 0 6px;
-  color: var(--muted); margin: 0 0 36px;
+  color: var(--muted); margin: 0;
 }
 .piece h2 { font-size: 15px; line-height: 22px; font-weight: 600; color: var(--body); margin: 32px 0 0; }
 .piece h2 + p { margin-top: 10px; }

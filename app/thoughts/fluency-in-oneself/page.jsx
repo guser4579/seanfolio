@@ -1,3 +1,5 @@
+import ShareButton from '../../../components/ShareButton';
+
 export const metadata = {
   title: "I stopped searching for life's answers and accidentally found all of them",
 };
@@ -13,14 +15,17 @@ export default function Page() {
         An artifact from the pursuit of a fluency in myself. I expect to
         disagree with parts of it later. That is the point.
       </p>
-      <p className="meta-line">
-        <span>
-          <span className="dot evergreen" aria-hidden="true" />
-          written by hand
-        </span>
-        <span aria-hidden="true">•</span>
-        <span>june 2026</span>
-      </p>
+      <div className="meta-row">
+        <p className="meta-line">
+          <span>
+            <span className="dot evergreen" aria-hidden="true" />
+            written by hand
+          </span>
+          <span aria-hidden="true">•</span>
+          <span>june 2026</span>
+        </p>
+        <ShareButton title="I stopped searching for life's answers and accidentally found all of them" />
+      </div>
 
       <h2>A Life Only Considered Isn't One Lived</h2>
       <p>

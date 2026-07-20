@@ -1,6 +1,7 @@
 import Gate from '../../components/Gate';
 import { gateOpen } from '../../lib/gate';
 import { Fig, Band } from '../../components/Study';
+import StudyHero from '../../components/StudyHero';
 
 export const metadata = {
   title: "Leaning into a user's natural behavior is far easier than trying to change it",
@@ -14,11 +15,7 @@ export default async function Page({ searchParams }) {
 
   return (
     <main id="main" className="study">
-      <h1>
-        Leaning into a user's natural behavior is far easier than trying to
-        change it
-      </h1>
-      <p className="meta-line">$500k in savings • Case Study • 2025</p>
+      <StudyHero slug="coi" />
 
       <h2>Overview</h2>
       <p>
