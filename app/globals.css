@@ -207,7 +207,7 @@ li.job { padding: 12px 0 14px; }
 .share svg { width: 16px; height: 16px; display: block; }
 
 .facts {
-  display: flex; flex-wrap: wrap; gap: 8px 40px;
+  display: flex; flex-direction: column; gap: 8px 40px;
   margin: 20px 0 0; padding: 14px 0;
   border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
 }

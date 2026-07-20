@@ -5,20 +5,47 @@ import { useState } from 'react';
 export default function ShareButton({ title }) {
   const [copied, setCopied] = useState(false);
 
+  function flash() {
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1600);
+  }
+
   async function onShare() {
     const url = window.location.href;
+    const shareTitle = title || document.title;
+
+    // Native share sheet (mobile, https only)
     if (navigator.share) {
       try {
-        await navigator.share({ title: title || document.title, url });
+        await navigator.share({ title: shareTitle, url });
         return;
       } catch (e) {
-        if (e.name === 'AbortError') return;
+        if (e && e.name === 'AbortError') return;
       }
     }
+
+    // Clipboard API (https only)
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      try {
+        await navigator.clipboard.writeText(url);
+        flash();
+        return;
+      } catch (e) {}
+    }
+
+    // Legacy copy - works over plain http (local device testing)
     try {
-      await navigator.clipboard.writeText(url);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1600);
+      const ta = document.createElement('textarea');
+      ta.value = url;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.top = '0';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      flash();
     } catch (e) {}
   }
 
