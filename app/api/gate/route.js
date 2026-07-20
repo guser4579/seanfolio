@@ -14,7 +14,7 @@ export async function POST(request) {
     res.cookies.set('folio_gate', '1', {
       httpOnly: true,
       sameSite: 'lax',
-      secure: true,
+      secure: process.env.NODE_ENV === 'production',
       maxAge: 60 * 60 * 24 * 30,
       path: '/',
     });
