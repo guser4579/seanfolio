@@ -40,7 +40,25 @@ export function HeroFoot({ readTime, date, title }) {
         />
         <ShareButton title={title} />
       </div>
-      <hr className="hero-rule" aria-hidden="true" />
+      <hr className="hero-rule close" aria-hidden="true" />
     </>
+  );
+}
+
+// Academic citation row for pieces that summarize or respond to a source:
+// muted lowercase label, then the linked work + author, opening externally.
+export function SourceRow({ source }) {
+  if (!source) return null;
+  return (
+    <p className="hero-meta hero-source">
+      <span className="src-label">source</span>
+      <a href={source.url} target="_blank" rel="noopener noreferrer">
+        {source.title}, {source.author}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M7 17 17 7" />
+          <path d="M9 7h8v8" />
+        </svg>
+      </a>
+    </p>
   );
 }

@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export const metadata = {
+  metadataBase: new URL('https://www.seanforquer.com'),
   title: {
     default: 'Sean Forquer - Product Designer',
     template: '%s - Sean Forquer',

@@ -7,7 +7,7 @@ export default function Page() {
     <main id="main" className="col piece">
       <ThoughtHero
         slug="post-literacy"
-        lede="The residue of a long conversation, prompted by Marriott's argument that literacy is more than decoding written language."
+        lede="the summary of a conversation I had that explored a great essay on Substack"
       />
 
       <h2>Summary</h2>

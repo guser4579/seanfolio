@@ -17,10 +17,7 @@ export default function Thoughts() {
               <Link className="item" href={`/thoughts/${t.slug}`}>
                 <span className="t">{t.title}</span>
                 <p className="g-meta">
-                  <span>
-                    <span className={`dot ${t.maturity}`} aria-hidden="true" />
-                    {t.provenance}
-                  </span>
+                  <span>{t.topic}</span>
                   <span aria-hidden="true">•</span>
                   <span>{t.date}</span>
                 </p>

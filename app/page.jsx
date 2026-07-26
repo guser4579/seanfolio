@@ -11,10 +11,10 @@ export default function Home() {
             hi, i'm sean
           </h1>
           <p>
-            I believe the best designs are the ones that meet the level of user
-            accommodation the context in which they live requires. I like to
-            approach my work with this in mind so design is a means to an end
-            and not the end itself.
+            I'm a product designer who does his best work where design doesn't
+            exist yet. I take ambiguous, complex problems and turn them into
+            shipped products, laying down the design foundations as I go. To
+            me, design is a means to an end, never the end itself.
           </p>
           <div className="interests">
             <div className="lab">interests</div>
@@ -59,10 +59,7 @@ export default function Home() {
               <Link className="item" href={`/thoughts/${t.slug}`}>
                 <span className="t">{t.title}</span>
                 <p className="g-meta">
-                  <span>
-                    <span className={`dot ${t.maturity}`} aria-hidden="true" />
-                    {t.provenance}
-                  </span>
+                  <span>{t.topic}</span>
                   <span aria-hidden="true">•</span>
                   <span>{t.date}</span>
                 </p>

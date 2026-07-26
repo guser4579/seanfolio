@@ -2,16 +2,38 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { EMAIL, LINKEDIN_URL, RESUME_URL } from '../lib/data';
 
 const BACK_ROUTES = ['/flexible-patterns', '/claims', '/coi', '/thoughts/'];
 
+// Counts in-app route changes this session. document.referrer never updates
+// on client-side navigations, so it cannot tell "arrived from within the
+// site" from "landed here directly" - this counter can. More than one
+// counted pathname means history holds an in-app page we can safely return
+// to; otherwise the back link falls through to a plain navigation home.
+let inAppNavs = 0;
+
 export default function Header() {
   const pathname = usePathname() || '/';
+  const router = useRouter();
   const isBack = BACK_ROUTES.some((p) =>
     p.endsWith('/') ? pathname.startsWith(p) : pathname === p
   );
+
+  useEffect(() => {
+    inAppNavs += 1;
+  }, [pathname]);
+
+  // Real history back (restores the previous page AND its scroll position)
+  // when the visitor arrived from within the site; direct/external entries
+  // fall through to the plain link and land on home.
+  function onBack(e) {
+    if (inAppNavs > 1) {
+      e.preventDefault();
+      router.back();
+    }
+  }
 
   const [open, setOpen] = useState(false);
 
@@ -64,7 +86,9 @@ export default function Header() {
           <div className="bar-inner">
             {isBack ? (
               <nav className="sub" aria-label="Breadcrumb">
-                <Link href="/">back</Link>
+                <Link href="/" onClick={onBack}>
+                  back
+                </Link>
               </nav>
             ) : (
               <nav className="sub" aria-label="Primary">

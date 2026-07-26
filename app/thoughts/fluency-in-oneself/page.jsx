@@ -7,10 +7,7 @@ export const metadata = {
 export default function Page() {
   return (
     <main id="main" className="col piece">
-      <ThoughtHero
-        slug="fluency-in-oneself"
-        lede="An artifact from the pursuit of a fluency in myself. I expect to disagree with parts of it later. That is the point."
-      />
+      <ThoughtHero slug="fluency-in-oneself" />
 
       <h2>A Life Only Considered Isn't One Lived</h2>
       <p>

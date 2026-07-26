@@ -183,14 +183,6 @@ a.item:hover .t { text-decoration: underline; text-underline-offset: 3px; }
   display: flex; align-items: center; flex-wrap: wrap; gap: 0 6px;
   color: var(--muted); margin: 4px 0 0;
 }
-.dot {
-  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
-  margin-right: 5px; position: relative; top: -1px;
-}
-.dot.new       { background: var(--teal); }
-.dot.growing   { background: var(--amber); }
-.dot.evergreen { background: var(--blue); }
-
 li.job { padding: 12px 0 14px; }
 .job .t { font-weight: 700; color: var(--title); }
 .job .role { color: var(--body); font-weight: 400; }
@@ -227,7 +219,17 @@ main.col > .article-hero + * { margin-top: 0; }
    ink but only 4.27px below it (canvas-measured, system-ui 14/20) - both
    gaps RENDER as an identical 12.0px from divider to ink */
 .hero-rule { border: 0; border-top: 1px solid var(--line); margin: 14px 0 7px; }
-.hero-rule:last-child { margin: 7.75px 0 0; }
+.hero-rule.close { margin: 7.75px 0 0; }
+
+/* academic citation row below the closing divider (source-summary pieces) */
+.article-hero .hero-source { margin-top: 8px; }
+.hero-source .src-label { color: var(--muted); }
+.hero-source a {
+  display: inline-flex; align-items: center; gap: 4px;
+  color: var(--link); text-decoration: underline; text-underline-offset: 2px;
+}
+.hero-source a:hover { color: var(--title); }
+.hero-source svg { width: 14px; height: 14px; display: block; }
 
 /* secondary row: read time / date (left) + share (right), a single 20px line */
 .meta-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
