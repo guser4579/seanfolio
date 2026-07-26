@@ -298,6 +298,19 @@ main.col > .article-hero + * { margin-top: 0; }
   flex: 0 0 260px; height: 180px; background: var(--paper);
   border: 1px solid var(--line); border-radius: 8px;
 }
+/* real filmstrip screens. Desktop: a justified row - each image's flex-grow
+   is its aspect ratio (--ar, set inline from real dimensions) with basis 0,
+   so widths distribute proportionally and all heights land equal while the
+   row fills the band edge-to-edge, capped at 1400px and centered beyond. */
+.strip:has(.screen) { max-width: 1400px; margin: 0 auto; }
+.strip .screen {
+  flex: var(--ar, 1) 1 0; height: auto; width: auto; min-width: 0; display: block;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 8px;
+}
+@media (max-width: 680px) {
+  /* mobile: fixed-height screens, natural widths, horizontal scroll */
+  .strip .screen { flex: 0 0 auto; height: 400px; }
+}
 
 /* ---------- gate ---------- */
 .gate {

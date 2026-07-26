@@ -19,7 +19,10 @@ export default async function Page({ searchParams }) {
     <main id="main" className="study">
       <StudyHero slug="flexible-patterns" />
 
-      <Fig ph="hero media - PetClear brand image" phClass="hero" />
+      <Fig
+        src="/media/flexible-patterns/hero.png"
+        alt="Foxen PetClear launch brand image with a service dog"
+      />
 
       <Thesis>
         When you don't know with certainty where things will end, which is
@@ -84,7 +87,8 @@ export default async function Page({ searchParams }) {
       </p>
 
       <Fig
-        ph="framed screenshot - read-only animal application"
+        src="/media/flexible-patterns/read-only-application.png"
+        alt="an animal application card listing animal, vet, and document information with no actions"
         caption="read-only animal application"
       />
 
@@ -119,11 +123,40 @@ export default async function Page({ searchParams }) {
         organization and transmission layer we had already established.
       </p>
       <Fig
-        ph="framed screenshot - in-line exception banner, weight-limit exceeded"
+        src="/media/flexible-patterns/exception-banners.png"
+        alt="a property manager reviewing an application with in-line banners flagging items that require review"
         caption="expandable in-line exception banners"
       />
 
-      <Band label="Filmstrip of PetClear screens" />
+      <Band
+        label="The exception review loop, from detection to resolution"
+        images={[
+          {
+            src: '/media/flexible-patterns/filmstrip-1.png',
+            alt: 'ESA letter flagged with two detected errors and a recommendation to request a new document',
+            w: 1000,
+            h: 2004,
+          },
+          {
+            src: '/media/flexible-patterns/filmstrip-2.png',
+            alt: 'application waiting on the resident after a new document was requested',
+            w: 1000,
+            h: 1520,
+          },
+          {
+            src: '/media/flexible-patterns/filmstrip-3.png',
+            alt: 'application approved after the corrected document passed analysis',
+            w: 1000,
+            h: 1464,
+          },
+          {
+            src: '/media/flexible-patterns/filmstrip-4.png',
+            alt: 'document history showing submission, flag, request, and re-submission events',
+            w: 1000,
+            h: 1701,
+          },
+        ]}
+      />
 
       <h2>The Graceful Expansion of Scope</h2>
       <p>
@@ -143,7 +176,8 @@ export default async function Page({ searchParams }) {
         among many.
       </p>
       <Fig
-        ph="framed screenshot - application with animal, background, and income screener tabs"
+        src="/media/flexible-patterns/screener-summary.png"
+        alt="an application summary with credit, income, background, and animal screening modules all complete"
         caption="one application, many screeners"
       />
 
@@ -156,12 +190,6 @@ export default async function Page({ searchParams }) {
         $4M+ in first-year bookings • ~7% of total company revenue • Foxen's
         fastest-growing product.
       </p>
-
-      <Fig
-        ph="wide collage - complete screening experience"
-        phClass="collage"
-        caption="complete screening experience"
-      />
     </main>
   );
 }

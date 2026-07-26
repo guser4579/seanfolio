@@ -17,7 +17,27 @@ export function Fig({ caption, ph, phClass = 'shot', src, alt }) {
   );
 }
 
-export function Band({ label = 'Filmstrip of screens', count = 5 }) {
+export function Band({ label = 'Filmstrip of screens', count = 5, images }) {
+  if (images) {
+    return (
+      <div className="band" role="group" aria-label={label}>
+        <div className="strip">
+          {images.map(({ src, alt, w, h }) => (
+            <img
+              className="screen"
+              src={src}
+              alt={alt}
+              width={w}
+              height={h}
+              style={{ '--ar': w / h }}
+              loading="lazy"
+              key={src}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="band" role="img" aria-label={label}>
       <div className="strip">
