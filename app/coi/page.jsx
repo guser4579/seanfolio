@@ -17,6 +17,11 @@ export default async function Page({ searchParams }) {
     <main id="main" className="study">
       <StudyHero slug="coi" />
 
+      <Fig
+        src="/media/coi/process.gif"
+        alt="animated loop of the new upload experience: a document is attached, analyzed in seconds, and answered with personalized feedback"
+      />
+
       <h2>Overview</h2>
       <p>
         Foxen ensures renters insurance requirements outlined in a resident's
@@ -42,8 +47,14 @@ export default async function Page({ searchParams }) {
       <p>We found people don't read.</p>
 
       <Fig
-        ph="attention heatmap - gaze lands on the upload control, not the requirements"
+        src="/media/coi/attention-heatmap.png"
+        alt="attention heatmap: gaze concentrates almost entirely on the upload control while the requirements text above goes unread"
         caption="attention heatmap over the original upload screen"
+      />
+      <Fig
+        src="/media/coi/before-flow.png"
+        alt="flow diagram of the original process: upload, a 24-48 hour manual review, then a success email or a generic rejection email that loops the user back to the start"
+        caption="before: 24-48 hour review and impersonal feedback"
       />
 
       <p>
@@ -71,17 +82,59 @@ export default async function Page({ searchParams }) {
       </p>
 
       <Fig
-        ph="before flow - upload, 24-48 hour review, generic rejection email"
-        phClass="collage"
-        caption="before: 24-48 hour review and impersonal feedback"
-      />
-      <Fig
-        ph="after flow - upload, 15 second analysis, personalized real-time feedback"
-        phClass="collage"
+        src="/media/coi/after-flow.png"
+        alt="flow diagram of the new process: upload, a 15-second eligibility determination, and personalized real-time feedback on rejection"
         caption="after: eligibility determined in 15 seconds"
       />
 
-      <Band label="Filmstrip of the new upload experience" />
+      <Band
+        label="The new upload experience, from requirements to real-time feedback"
+        layout="natural"
+        images={[
+          {
+            src: '/media/coi/filmstrip-1.png',
+            alt: 'third-party policy modal listing the three lease requirements with a file upload control',
+            w: 870,
+            h: 921,
+          },
+          {
+            src: '/media/coi/filmstrip-2.png',
+            alt: 'the same modal with a policy document attached and ready to submit',
+            w: 870,
+            h: 942,
+          },
+          {
+            src: '/media/coi/filmstrip-3.png',
+            alt: 'processing state noting analysis usually takes 15 seconds',
+            w: 870,
+            h: 652,
+          },
+          {
+            src: '/media/coi/filmstrip-4.png',
+            alt: 'success state: the policy meets requirements and the resident is unenrolled from the waiver program',
+            w: 870,
+            h: 895,
+          },
+          {
+            src: '/media/coi/filmstrip-5.png',
+            alt: 'document submitted for manual review after choosing to submit anyway',
+            w: 870,
+            h: 895,
+          },
+          {
+            src: '/media/coi/filmstrip-6.png',
+            alt: 'alert naming the exact problem, incorrect additional interest, with the exact text the policy must show',
+            w: 870,
+            h: 1340,
+          },
+          {
+            src: '/media/coi/filmstrip-7.png',
+            alt: 'requirements expanded to show precisely what the policy must include, with a 30-second instruction video',
+            w: 870,
+            h: 1212,
+          },
+        ]}
+      />
 
       <h2>Outcome</h2>
       <p>
