@@ -1,13 +1,15 @@
+import { Fragment } from 'react';
+
 export function Thesis({ children }) {
   return <blockquote className="thesis">{children}</blockquote>;
 }
 
-export function Fig({ caption, ph, phClass = 'shot', src, alt }) {
+export function Fig({ caption, ph, phClass = 'shot', src, alt, natural }) {
   return (
     <figure>
       {src ? (
         <div className="frame">
-          <img src={src} alt={alt || caption || ''} />
+          <img className={natural ? 'natural' : undefined} src={src} alt={alt || caption || ''} />
         </div>
       ) : (
         <div className={`frame ph ${phClass}`}>[ {ph} ]</div>
@@ -17,22 +19,48 @@ export function Fig({ caption, ph, phClass = 'shot', src, alt }) {
   );
 }
 
-export function Band({ label = 'Filmstrip of screens', count = 5, images }) {
-  if (images) {
+export function Band({ label = 'Filmstrip of screens', count = 5, images, breakAfter, layout }) {
+  // natural: images at a fixed modest size, top-aligned, centered as a group
+  // when the viewport has room, horizontal scroll when it does not. The
+  // images carry their own card styling (baked-in corners/shadows) - no chrome.
+  if (images && layout === 'natural') {
     return (
       <div className="band" role="group" aria-label={label}>
-        <div className="strip">
+        <div className="strip natural">
           {images.map(({ src, alt, w, h }) => (
             <img
-              className="screen"
+              className="screen-nat"
               src={src}
               alt={alt}
               width={w}
               height={h}
-              style={{ '--ar': w / h }}
               loading="lazy"
               key={src}
             />
+          ))}
+        </div>
+      </div>
+    );
+  }
+  if (images) {
+    return (
+      <div className="band" role="group" aria-label={label}>
+        <div className="strip">
+          {images.map(({ src, alt, w, h }, i) => (
+            <Fragment key={src}>
+              <img
+                className="screen"
+                src={src}
+                alt={alt}
+                width={w}
+                height={h}
+                style={{ '--ar': w / h }}
+                loading="lazy"
+              />
+              {breakAfter === i + 1 && i + 1 < images.length ? (
+                <span className="screen-break" aria-hidden="true" />
+              ) : null}
+            </Fragment>
           ))}
         </div>
       </div>
