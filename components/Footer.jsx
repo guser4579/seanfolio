@@ -1,4 +1,4 @@
-import { EMAIL, LINKEDIN_URL, RESUME_URL } from '../lib/data';
+import { EMAIL, LINKEDIN_URL, RESUME_URL, X_URL } from '../lib/data';
 
 export default function Footer() {
   return (
@@ -11,6 +11,7 @@ export default function Footer() {
         <nav className="links" aria-label="Contact">
           <a href={`mailto:${EMAIL}`}>email</a>
           <a href={LINKEDIN_URL}>linkedin</a>
+          <a href={X_URL}>x</a>
           <a href={RESUME_URL}>resume</a>
         </nav>
       </div>

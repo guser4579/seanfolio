@@ -11,10 +11,14 @@ export default function Home() {
             hi, i'm sean
           </h1>
           <p>
-            I'm a product designer who does his best work where design doesn't
-            exist yet. I take ambiguous, complex problems and turn them into
-            shipped products, laying down the design foundations as I go. To
-            me, design is a means to an end, never the end itself.
+            Welcome to my portfolio. I love design and I love product. They've
+            been some of my best teachers about the world, the people in it,
+            and the technology that changes both. I enjoy the challenge of
+            standing up a design org inside an established company, and I'm
+            equally comfortable plugging into an existing design department
+            and pushing it forward. My interest in a problem tends to move
+            linearly with its complexity - and with how much solving it
+            actually serves the organization that chose it.
           </p>
           <div className="interests">
             <div className="lab">interests</div>
