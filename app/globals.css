@@ -155,6 +155,7 @@ h1.head, h2.head {
   border-radius: 16px; padding: 16px;
 }
 .card p { margin: 0; }
+.card p + p { margin-top: 14px; }
 .card .head { margin-bottom: 10px; }
 .interests { margin-top: 18px; }
 .lab {
@@ -211,6 +212,8 @@ main.col > .article-hero + * { margin-top: 0; }
 }
 /* case-study primary row: title's 4px margin-bottom is the whole title->meta gap */
 .hero-primary .v { color: var(--title); font-weight: 400; }
+/* optional muted lede line below the primary row (how-i-work) */
+.article-hero .hero-lede { color: var(--muted); margin: 6px 0 0; }
 /* thought byline keeps its 12px gap below the lede/title */
 .article-hero .hero-byline { margin-top: 12px; }
 
@@ -281,9 +284,10 @@ main.col > .article-hero + * { margin-top: 0; }
 .study h3 { font-size: 14px; line-height: 20px; font-weight: 600; color: var(--body); margin: 24px 0 0; }
 .study h3 + p { margin-top: 8px; }
 .study p { margin: 14px 0 0; }
-.study ul { margin: 14px 0 0; padding-left: 20px; }
+.study ul, .study ol { margin: 14px 0 0; padding-left: 20px; }
 .study li { margin-top: 6px; }
 .study li::marker { color: var(--muted); }
+.study .toolname { font-weight: 600; color: var(--title); }
 .formula { font-style: italic; color: var(--muted); }
 
 .band {
@@ -335,6 +339,36 @@ main.col > .article-hero + * { margin-top: 0; }
   .strip:has(.screen-break) { flex-wrap: nowrap; }
   .strip .screen { flex: 0 0 auto; height: 400px; }
   .screen-break { display: none; }
+}
+
+/* ---------- skill file downloads (how-i-work) ---------- */
+.skillfiles { margin: 24px 0 0; display: flex; flex-direction: column; gap: 10px; }
+.skillfile {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 12px; padding: 12px 14px;
+}
+.skillfile .doc { flex-shrink: 0; width: 20px; height: 20px; color: var(--muted); }
+.skillfile .doc svg { width: 20px; height: 20px; display: block; }
+.skillfile .info { flex: 1 1 auto; min-width: 0; }
+.skillfile .t { font-weight: 600; color: var(--title); font-size: 14px; line-height: 20px; display: block; }
+.skillfile .meta { margin: 1px 0 0; color: var(--muted); font-size: 14px; line-height: 20px; }
+a.skillfile-dl {
+  flex-shrink: 0; display: inline-flex; align-items: stretch;
+  background: var(--btn-bg); color: var(--btn-fg);
+  border-radius: 10px; overflow: hidden; text-decoration: none;
+  font-size: 14px; line-height: 20px; font-weight: 600;
+}
+a.skillfile-dl:hover { background: var(--btn-bg-hover); }
+.skillfile-dl .main { display: inline-flex; align-items: center; padding: 7px 12px; }
+.skillfile-dl .chev {
+  display: inline-flex; align-items: center; padding: 0 8px;
+  border-left: 1px solid color-mix(in srgb, var(--btn-fg) 22%, transparent);
+}
+.skillfile-dl svg { width: 14px; height: 14px; display: block; }
+@media (max-width: 480px) {
+  .skillfile { flex-wrap: wrap; }
+  .skillfile-dl { margin-left: 34px; }
 }
 
 /* ---------- gate ---------- */

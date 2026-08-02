@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { EMAIL, LINKEDIN_URL, RESUME_URL } from '../lib/data';
 
-const BACK_ROUTES = ['/flexible-patterns', '/claims', '/coi', '/thoughts/'];
+const BACK_ROUTES = ['/design-at-foxen', '/flexible-patterns', '/claims', '/coi', '/thoughts/'];
 
 // Counts in-app route changes this session. document.referrer never updates
 // on client-side navigations, so it cannot tell "arrived from within the

@@ -12,6 +12,7 @@ export default function StudyHero({ slug }) {
         emphasize
         items={[item.outcome, item.role, item.company]}
       />
+      {item.lede ? <p className="hero-lede">{item.lede}</p> : null}
       <HeroFoot readTime={item.readTime} date={item.year} title={item.title} />
     </div>
   );

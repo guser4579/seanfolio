@@ -11,14 +11,15 @@ export default function Home() {
             hi, i'm sean
           </h1>
           <p>
-            Welcome to my portfolio. I love design and I love product. They've
-            been some of my best teachers about the world, the people in it,
-            and the technology that changes both. I enjoy the challenge of
-            standing up a design org inside an established company, and I'm
-            equally comfortable plugging into an existing design department
-            and pushing it forward. My interest in a problem tends to move
-            linearly with its complexity - and with how much solving it
-            actually serves the organization that chose it.
+            I am currently a design department of one at Foxen, where I do
+            everything from setting our design system standards to
+            choreographing design/research/strategy/implementation across the
+            multiple platforms I support.
+          </p>
+          <p>
+            I love design and I love product. They've been some of my best
+            teachers about the world, the people in it, and the technology
+            that changes both.
           </p>
           <div className="interests">
             <div className="lab">interests</div>
