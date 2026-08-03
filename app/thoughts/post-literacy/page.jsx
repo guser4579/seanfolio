@@ -1,4 +1,5 @@
 import ThoughtHero from '../../../components/ThoughtHero';
+import ScrollProgress from '../../../components/ScrollProgress';
 
 export const metadata = { title: 'On a post-literate society' };
 
@@ -112,6 +113,8 @@ export default function Page() {
         while everyone else was continuously stimulated, emotionally activated,
         and quietly governed.
       </p>
+
+      <ScrollProgress />
     </main>
   );
 }

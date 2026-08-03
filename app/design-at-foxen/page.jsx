@@ -1,5 +1,6 @@
 import StudyHero from '../../components/StudyHero';
 import SkillFile from '../../components/SkillFile';
+import ScrollProgress from '../../components/ScrollProgress';
 
 export const metadata = {
   title: 'How I run design at Foxen',
@@ -250,6 +251,8 @@ export default function Page() {
           surfaces frustrated user sessions and optimization targets.
         </li>
       </ul>
+
+      <ScrollProgress />
     </main>
   );
 }

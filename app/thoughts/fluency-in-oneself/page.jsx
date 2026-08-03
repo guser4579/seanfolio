@@ -1,4 +1,5 @@
 import ThoughtHero from '../../../components/ThoughtHero';
+import ScrollProgress from '../../../components/ScrollProgress';
 
 export const metadata = {
   title: "I stopped searching for life's answers and accidentally found all of them",
@@ -169,6 +170,8 @@ export default function Page() {
         pursuit of it, an infinite well from which purpose and fulfillment seem
         likely to be, with an equal infinity, derived.
       </p>
+
+      <ScrollProgress />
     </main>
   );
 }

@@ -2,6 +2,7 @@ import Gate from '../../components/Gate';
 import { gateOpen } from '../../lib/gate';
 import { Fig, Band } from '../../components/Study';
 import StudyHero from '../../components/StudyHero';
+import ScrollProgress from '../../components/ScrollProgress';
 
 export const metadata = {
   title: "Leaning into a user's natural behavior is far easier than trying to change it",
@@ -153,6 +154,8 @@ export default async function Page({ searchParams }) {
         requiring support) x (10 min spent supporting) x ($25 an hour for
         support tech) = $41,750/mo.
       </p>
+
+      <ScrollProgress />
     </main>
   );
 }

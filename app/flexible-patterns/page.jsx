@@ -2,6 +2,7 @@ import Gate from '../../components/Gate';
 import { gateOpen } from '../../lib/gate';
 import { Thesis, Fig, Band } from '../../components/Study';
 import StudyHero from '../../components/StudyHero';
+import ScrollProgress from '../../components/ScrollProgress';
 
 export const metadata = {
   title: 'Flexible design patterns are best for an uncertain future',
@@ -190,6 +191,8 @@ export default async function Page({ searchParams }) {
         $4M+ in first-year bookings • ~7% of total company revenue • Foxen's
         fastest-growing product.
       </p>
+
+      <ScrollProgress />
     </main>
   );
 }

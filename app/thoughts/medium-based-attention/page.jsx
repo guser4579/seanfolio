@@ -1,4 +1,5 @@
 import ThoughtHero from '../../../components/ThoughtHero';
+import ScrollProgress from '../../../components/ScrollProgress';
 
 export const metadata = { title: 'Medium-based attention' };
 
@@ -15,6 +16,8 @@ export default function Page() {
         Attention is a teachable skill that can be cultivated, just as
         distraction can too be.
       </p>
+
+      <ScrollProgress />
     </main>
   );
 }

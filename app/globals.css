@@ -412,6 +412,21 @@ a.skillfile-dl:hover { background: var(--btn-bg-hover); }
 .piece li { margin-top: 6px; font-size: 16px; line-height: 24px; }
 .piece li::marker { color: var(--muted); }
 
+/* ---------- scroll progress pill (case studies + thought pieces) ---------- */
+.scrollpill {
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: 24px; z-index: 40;
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 12px; /* 12px gutters, 8px top/bottom -> 40px tall */
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--body); font-size: 16px; line-height: 24px; font-weight: 500;
+  white-space: nowrap;
+}
+.scrollpill svg { width: 24px; height: 24px; display: block; flex-shrink: 0; }
+.scrollpill .track { stroke: var(--line); }
+.scrollpill .arc { stroke: var(--title); }
+
 /* ---------- contact modal ---------- */
 .overlay {
   position: fixed; inset: 0; z-index: 90;

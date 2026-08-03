@@ -2,6 +2,7 @@ import Gate from '../../components/Gate';
 import { gateOpen } from '../../lib/gate';
 import { Fig, Band } from '../../components/Study';
 import StudyHero from '../../components/StudyHero';
+import ScrollProgress from '../../components/ScrollProgress';
 
 export const metadata = {
   title: 'Creating a claims process that prevents errors and increases confidence',
@@ -201,6 +202,8 @@ export default async function Page({ searchParams }) {
         alt="collage of the claims management screens: claim list, progress timeline, incident details, and claim contact"
         caption="complete claims management experience"
       />
+
+      <ScrollProgress />
     </main>
   );
 }
