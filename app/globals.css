@@ -347,7 +347,10 @@ main.col > .article-hero + * { margin-top: 0; }
 }
 
 /* ---------- skill file downloads (how-i-work) ---------- */
-.skillfiles { margin: 24px 0 0; display: flex; flex-direction: column; gap: 10px; }
+/* 24px above; 23px below collapses with the next p's 14px and compensates for
+   the ~1px extra dead space above glyph ink vs below it (16/24 line box), so
+   the gaps above and below the card group RENDER as visually identical */
+.skillfiles { margin: 24px 0 23px; display: flex; flex-direction: column; gap: 10px; }
 .skillfile {
   display: flex; align-items: center; gap: 14px;
   background: var(--card); border: 1px solid var(--line);
