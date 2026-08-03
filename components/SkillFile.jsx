@@ -13,7 +13,7 @@ export default function SkillFile({ name, file }) {
       </span>
       <div className="info">
         <span className="t">{name}</span>
-        <div className="meta">Skill file • MD • genericized</div>
+        <div className="meta">Skill file • MD</div>
       </div>
       <a className="skillfile-dl" href={`/skills/${file}`} download={file} aria-label={`Download ${name}`}>
         <span className="main">download</span>
