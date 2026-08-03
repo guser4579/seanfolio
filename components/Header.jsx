@@ -122,11 +122,18 @@ export default function Header() {
               aria-label="Toggle light and dark theme"
             >
               <svg className="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M20.5 14.2A8 8 0 1 1 9.8 3.5a6.4 6.4 0 0 0 10.7 10.7z" />
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
               </svg>
-              <svg className="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="4.2" />
-                <path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6" />
+              <svg className="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2" />
+                <path d="M12 20v2" />
+                <path d="m4.93 4.93 1.41 1.41" />
+                <path d="m17.66 17.66 1.41 1.41" />
+                <path d="M2 12h2" />
+                <path d="M20 12h2" />
+                <path d="m6.34 17.66-1.41 1.41" />
+                <path d="m19.07 4.93-1.41 1.41" />
               </svg>
             </button>
           </div>
@@ -145,15 +152,15 @@ export default function Header() {
           >
             <h2 id="contact-title">Contact</h2>
             <p className="intro">
-              Feel free to reach out using the options below. If you're in
-              Columbus, let's chat over some coffee!
+              Feel free to reach out using the options below. Coffee is on me
+              if we're ever in the same city.
             </p>
 
             <div className="rows">
               <div className="row">
-                <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                  <rect x="3" y="5" width="18" height="14" rx="2.5" />
-                  <path d="m4 7 8 6 8-6" />
+                <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                 </svg>
                 <span className="label">Email</span>
                 <a className="value plain" href={`mailto:${EMAIL}`}>
@@ -161,12 +168,10 @@ export default function Header() {
                 </a>
               </div>
               <div className="row">
-                <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                  <rect x="3" y="3" width="18" height="18" rx="3.5" />
-                  <path d="M8 11v5" />
-                  <circle cx="8" cy="7.8" r="0.9" fill="currentColor" stroke="none" />
-                  <path d="M12 16v-3a2 2 0 0 1 4 0v3" />
-                  <path d="M12 11v1" />
+                <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
                 </svg>
                 <span className="label">LinkedIn</span>
                 <a className="value link" href={LINKEDIN_URL}>
@@ -174,23 +179,17 @@ export default function Header() {
                 </a>
               </div>
               <div className="row">
-                <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                  <path d="M7 3h7l4 4v14H7z" />
-                  <path d="M14 3v4h4" />
-                  <path d="M10 12h5M10 16h5" />
+                <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+                  <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                  <path d="M16 13H8" />
+                  <path d="M16 17H8" />
+                  <path d="M10 9H8" />
                 </svg>
                 <span className="label">Resume</span>
                 <a className="value link" href={RESUME_URL}>
                   Download
                 </a>
-              </div>
-              <div className="row">
-                <svg className="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                  <circle cx="12" cy="12" r="9" />
-                  <path d="M3 12h18M12 3c2.7 2.6 4 5.8 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.8-4-9s1.3-6.4 4-9z" />
-                </svg>
-                <span className="label">Location</span>
-                <span className="value">Columbus, OH</span>
               </div>
             </div>
 

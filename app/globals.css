@@ -482,7 +482,7 @@ a.skillfile-dl:hover { background: var(--btn-bg-hover); }
   background: var(--btn-bg); border: 0; border-radius: 999px; /* pill */
   padding: 10px 16px; /* 40px total height, matches gate submit */
   cursor: pointer;
-  margin-top: 80px; /* location row bottom → close top */
+  margin-top: 80px; /* last row bottom → close top */
 }
 .modal .close-btn:hover { background: var(--btn-bg-hover); }
 @media (max-width: 639px) {
