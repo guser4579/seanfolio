@@ -354,22 +354,13 @@ main.col > .article-hero + * { margin-top: 0; }
 .skillfile .t { font-weight: 600; color: var(--title); font-size: 14px; line-height: 20px; display: block; }
 .skillfile .meta { margin: 1px 0 0; color: var(--muted); font-size: 14px; line-height: 20px; }
 a.skillfile-dl {
-  flex-shrink: 0; display: inline-flex; align-items: stretch;
+  flex-shrink: 0; display: inline-flex; align-items: center;
   background: var(--btn-bg); color: var(--btn-fg);
-  border-radius: 10px; overflow: hidden; text-decoration: none;
+  border-radius: 10px; text-decoration: none;
+  padding: 7px 12px; margin-left: 10px;
   font-size: 14px; line-height: 20px; font-weight: 600;
 }
 a.skillfile-dl:hover { background: var(--btn-bg-hover); }
-.skillfile-dl .main { display: inline-flex; align-items: center; padding: 7px 12px; }
-.skillfile-dl .chev {
-  display: inline-flex; align-items: center; padding: 0 8px;
-  border-left: 1px solid color-mix(in srgb, var(--btn-fg) 22%, transparent);
-}
-.skillfile-dl svg { width: 14px; height: 14px; display: block; }
-@media (max-width: 480px) {
-  .skillfile { flex-wrap: wrap; }
-  .skillfile-dl { margin-left: 34px; }
-}
 
 /* ---------- gate ---------- */
 .gate {
