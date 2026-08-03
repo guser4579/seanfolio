@@ -156,6 +156,7 @@ h1.head, h2.head {
 }
 .card p { margin: 0; }
 .card p + p { margin-top: 14px; }
+.card p { font-size: 15px; line-height: 21px; }
 .card a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
 .card a:hover { color: var(--title); }
 .card .head { margin-bottom: 10px; }
@@ -192,7 +193,7 @@ li.job { padding: 12px 0 14px; }
 .job .meta { color: var(--muted); margin: 2px 0 0; }
 
 /* ---------- case study ---------- */
-.study h1 { font-size: 20px; line-height: 28px; font-weight: 600; color: var(--title); margin: 0 0 4px; }
+.study h1 { font-size: 22px; line-height: 30px; font-weight: 600; color: var(--title); margin: 0 0 4px; }
 
 /* ---------- article hero (shared: case studies + thought pieces) ----------
    Structure: title -> primary metadata row -> divider -> secondary row
@@ -216,6 +217,9 @@ main.col > .article-hero + * { margin-top: 0; }
 .hero-primary .v { color: var(--title); font-weight: 400; }
 /* optional muted lede line below the primary row (how-i-work) */
 .article-hero .hero-lede { color: var(--muted); margin: 6px 0 0; }
+/* hero zone is chrome: hold 14/20 against the .study/.piece 16px prose rules
+   (also keeps the canvas-measured hero-rule margins valid) */
+.article-hero .hero-meta, .article-hero .hero-lede { font-size: 14px; line-height: 20px; }
 /* thought byline keeps its 12px gap below the lede/title */
 .article-hero .hero-byline { margin-top: 12px; }
 
@@ -261,7 +265,7 @@ main.col > .article-hero + * { margin-top: 0; }
 .frame img.natural { width: auto; max-width: 100%; margin: 0 auto; padding: 24px 0; }
 .study figcaption {
   text-align: center; font-style: italic; color: var(--muted);
-  font-size: 13px; margin-top: 10px;
+  font-size: 14px; margin-top: 10px;
 }
 .ph {
   display: flex; align-items: center; justify-content: center;
@@ -274,19 +278,19 @@ main.col > .article-hero + * { margin-top: 0; }
 .thesis {
   margin: 32px 0; padding: 2px 0 2px 20px;
   border-left: 5px solid var(--thesis-border);
-  color: var(--muted); font-size: 17px; line-height: 26px;
+  color: var(--muted); font-size: 18px; line-height: 28px;
 }
 
 .study h2 {
-  font-size: 16px; line-height: 22px; font-weight: 600; color: var(--body);
+  font-size: 18px; line-height: 24px; font-weight: 600; color: var(--body);
   margin: 44px 0 0; padding-bottom: 8px; border-bottom: 1px solid var(--line);
 }
 .study h2 + p { margin-top: 14px; }
-.study h3 { font-size: 14px; line-height: 20px; font-weight: 600; color: var(--body); margin: 24px 0 0; }
+.study h3 { font-size: 16px; line-height: 22px; font-weight: 600; color: var(--body); margin: 24px 0 0; }
 .study h3 + p { margin-top: 8px; }
-.study p { margin: 14px 0 0; }
+.study p { margin: 14px 0 0; font-size: 16px; line-height: 24px; }
 .study ul, .study ol { margin: 14px 0 0; padding-left: 20px; }
-.study li { margin-top: 6px; }
+.study li { margin-top: 6px; font-size: 16px; line-height: 24px; }
 .study li::marker { color: var(--muted); }
 .study .toolname { font-weight: 600; color: var(--title); }
 .formula { font-style: italic; color: var(--muted); }
@@ -396,13 +400,13 @@ a.skillfile-dl:hover { background: var(--btn-bg-hover); }
 .gate .err { margin: 10px 0 0; color: var(--error); }
 
 /* ---------- thought piece ---------- */
-.piece h1 { font-size: 20px; line-height: 28px; font-weight: 600; color: var(--title); margin: 0 0 8px; }
-.piece .lede { color: var(--muted); margin: 0 0 12px; }
-.piece h2 { font-size: 15px; line-height: 22px; font-weight: 600; color: var(--body); margin: 32px 0 0; }
+.piece h1 { font-size: 22px; line-height: 30px; font-weight: 600; color: var(--title); margin: 0 0 8px; }
+.piece .lede { color: var(--muted); margin: 0 0 12px; font-size: 16px; line-height: 24px; }
+.piece h2 { font-size: 17px; line-height: 24px; font-weight: 600; color: var(--body); margin: 32px 0 0; }
 .piece h2 + p { margin-top: 10px; }
-.piece p { margin: 14px 0 0; }
+.piece p { margin: 14px 0 0; font-size: 16px; line-height: 24px; }
 .piece ul { margin: 14px 0 0; padding-left: 20px; }
-.piece li { margin-top: 6px; }
+.piece li { margin-top: 6px; font-size: 16px; line-height: 24px; }
 .piece li::marker { color: var(--muted); }
 
 /* ---------- contact modal ---------- */
