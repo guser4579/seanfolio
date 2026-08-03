@@ -156,6 +156,8 @@ h1.head, h2.head {
 }
 .card p { margin: 0; }
 .card p + p { margin-top: 14px; }
+.card a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
+.card a:hover { color: var(--title); }
 .card .head { margin-bottom: 10px; }
 .interests { margin-top: 18px; }
 .lab {
@@ -232,7 +234,6 @@ main.col > .article-hero + * { margin-top: 0; }
   color: var(--link); text-decoration: underline; text-underline-offset: 2px;
 }
 .hero-source a:hover { color: var(--title); }
-.hero-source svg { width: 14px; height: 14px; display: block; }
 
 /* secondary row: read time / date (left) + share (right), a single 20px line */
 .meta-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
@@ -379,11 +380,15 @@ a.skillfile-dl:hover { background: var(--btn-bg-hover); }
   padding: 12px 14px; background: var(--paper);
 }
 .gate input[type="password"]::placeholder { color: var(--muted); }
+/* iOS Safari auto-zooms focused inputs with text < 16px; hold 16px on small screens */
+@media (max-width: 680px) {
+  .gate input[type="password"] { font-size: 16px; line-height: 24px; }
+}
 .gate .submit {
   display: block; width: 100%;
   margin-top: 40px;
   font: inherit; font-weight: 600; color: var(--btn-fg);
-  background: var(--btn-bg); border: 0; border-radius: 14px;
+  background: var(--btn-bg); border: 0; border-radius: 999px; /* pill */
   padding: 10px 16px; /* 40px total height */
   cursor: pointer;
 }
@@ -411,9 +416,10 @@ a.skillfile-dl:hover { background: var(--btn-bg-hover); }
 }
 @media (min-width: 640px) {
   .modal {
-    top: 120px; left: 50%; transform: translateX(-50%); /* never lower than 120px from top */
+    top: 12%; left: 50%; transform: translateX(-50%); /* 12% from the top of the screen */
     width: 560px; max-width: calc(100vw - 48px);
-    max-height: calc(100vh - 144px);
+    max-height: calc(88vh - 24px);
+    border: 1px solid var(--line);
     overflow-y: auto;
     border-radius: 24px;
     box-shadow: 0 24px 64px rgba(16, 17, 18, 0.18);
@@ -421,7 +427,7 @@ a.skillfile-dl:hover { background: var(--btn-bg-hover); }
   }
 }
 @media (max-width: 639px) {
-  .modal { inset: 0; padding: 36px 16px 24px; }
+  .modal { inset: 0; padding: 36px 16px 40px; } /* 40px below the close button */
 }
 @media (prefers-reduced-motion: no-preference) {
   @media (min-width: 640px) {
@@ -451,7 +457,7 @@ a.skillfile-dl:hover { background: var(--btn-bg-hover); }
 .modal .close-btn {
   display: block; width: 100%;
   font: inherit; font-weight: 600; color: var(--btn-fg);
-  background: var(--btn-bg); border: 0; border-radius: 16px;
+  background: var(--btn-bg); border: 0; border-radius: 999px; /* pill */
   padding: 10px 16px; /* 40px total height, matches gate submit */
   cursor: pointer;
   margin-top: 80px; /* location row bottom → close top */

@@ -54,10 +54,6 @@ export function SourceRow({ source }) {
       <span className="src-label">source</span>
       <a href={source.url} target="_blank" rel="noopener noreferrer">
         {source.title}, {source.author}
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <path d="M7 17 17 7" />
-          <path d="M9 7h8v8" />
-        </svg>
       </a>
     </p>
   );

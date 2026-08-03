@@ -11,10 +11,14 @@ export default function Home() {
             hi, i'm sean
           </h1>
           <p>
-            I am currently a design department of one at Foxen, where I do
-            everything from setting our design system standards to
-            choreographing design/research/strategy/implementation across the
-            multiple platforms I support.
+            I am currently a design department of one at a software company
+            called{' '}
+            <a href="https://www.foxen.com" target="_blank" rel="noopener noreferrer">
+              Foxen
+            </a>
+            . Here, I am focused on balancing the IC design needs of the
+            product teams I serve and establishing the systems and strategy
+            that make that possible.
           </p>
           <p>
             I love design and I love product. They've been some of my best
