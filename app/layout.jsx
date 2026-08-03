@@ -9,7 +9,7 @@ export const metadata = {
     template: '%s - Sean Forquer',
   },
   description:
-    'Sean Forquer is a product designer in Columbus, Ohio. He runs design at Foxen.',
+    'Sean Forquer is a product designer. He runs design at Foxen as a department of one.',
 };
 
 export default function RootLayout({ children }) {
