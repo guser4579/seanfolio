@@ -67,6 +67,7 @@ export default function Home() {
             <li key={t.slug}>
               <Link className="item" href={`/thoughts/${t.slug}`}>
                 <span className="t">{t.title}</span>
+                {t.blurb ? <p className="blurb">{t.blurb}</p> : null}
                 <p className="g-meta">
                   <span>{t.topic}</span>
                   <span aria-hidden="true">•</span>

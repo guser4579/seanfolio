@@ -2,7 +2,7 @@ import ThoughtHero from '../../../components/ThoughtHero';
 import ScrollProgress from '../../../components/ScrollProgress';
 
 export const metadata = {
-  title: "I stopped searching for life's answers and accidentally found all of them",
+  title: "I stopped searching for life's answers and accidentally found them all",
 };
 
 export default function Page() {

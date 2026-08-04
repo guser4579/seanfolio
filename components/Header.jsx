@@ -99,6 +99,7 @@ export default function Header() {
                 >
                   my work
                 </Link>
+                {/* thoughts hidden for now - restore by uncommenting
                 <Link
                   className={pathname === '/thoughts' ? 'current' : undefined}
                   aria-current={pathname === '/thoughts' ? 'page' : undefined}
@@ -106,6 +107,7 @@ export default function Header() {
                 >
                   thoughts
                 </Link>
+                */}
                 <button
                   ref={triggerRef}
                   aria-haspopup="dialog"
