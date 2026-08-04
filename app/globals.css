@@ -470,10 +470,7 @@ a.skillfile-dl:hover { background: var(--btn-bg-hover); }
   from { transform: translateY(28px); opacity: .7; }
   to   { transform: none; opacity: 1; }
 }
-.modal h2 {
-  font-size: 20px; line-height: 28px; font-weight: 600; color: var(--title);
-  margin: 0 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--line);
-}
+.modal h2 { font-size: 20px; line-height: 28px; font-weight: 600; color: var(--title); margin: 0 0 4px; }
 .modal .intro { margin: 0 0 20px; }
 .rows { display: flex; flex-direction: column; gap: 16px; } /* exactly 16px between rows */
 .row { display: flex; align-items: center; gap: 12px; padding: 0; }
