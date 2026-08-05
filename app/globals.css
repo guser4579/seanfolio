@@ -82,15 +82,6 @@ h1, h2, h3 { text-wrap: balance; }
 p, li, figcaption, blockquote { text-wrap: pretty; }
 a.item .t { display: block; text-wrap: balance; }
 
-/* flat vertical edges on both sides: justified body text with automatic
-   hyphenation - article prose only (case studies and thought pieces);
-   everything else keeps its natural rag */
-.study p, .study li, .piece p, .piece li {
-  text-align: justify;
-  -webkit-hyphens: auto;
-  hyphens: auto;
-}
-
 a:focus-visible, button:focus-visible, input:focus-visible {
   outline: 2px solid var(--title); outline-offset: 2px;
 }
