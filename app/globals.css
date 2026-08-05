@@ -73,6 +73,15 @@ body {
 }
 main { flex: 1 1 auto; }
 
+/* ---------- wrapping: uniform information density ----------
+   balance equalizes line lengths on short multi-line runs (headings and
+   entry titles); pretty evens the rag and prevents orphaned last words in
+   flowing text. Both are progressive enhancements - unsupported browsers
+   simply ignore them. */
+h1, h2, h3 { text-wrap: balance; }
+p, li, figcaption, blockquote { text-wrap: pretty; }
+a.item .t { display: block; text-wrap: balance; }
+
 a:focus-visible, button:focus-visible, input:focus-visible {
   outline: 2px solid var(--title); outline-offset: 2px;
 }
