@@ -11,19 +11,6 @@ export default function Page() {
     <main id="main" className="study">
       <StudyHero slug="design-at-foxen" />
 
-      <h2>Intro</h2>
-      <p>
-        March 2024 was a seminal moment in time for Foxen, as the design
-        headcount rose from 0 to 1; an increase of, depending on how you
-        count, either 100% or everything. Two years later, that same headcount
-        supports four teams as well as design as an independent strategic
-        function - resident experience, property manager experience, Foxen
-        associate experience, and an innovation team where new products are
-        conceived. As Foxen has grown, the demand from design has increased
-        considerably. When resourcing does not grow commensurate to demand,
-        capacity must be creatively contrived.
-      </p>
-
       <h2>The starting point</h2>
       <p>
         When I joined, design as function did not exist at Foxen. There were
