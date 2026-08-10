@@ -196,6 +196,14 @@ a.item:hover .t { text-decoration: underline; text-underline-offset: 3px; }
   display: flex; align-items: center; flex-wrap: wrap; gap: 0 6px;
   color: var(--muted); margin: 4px 0 0;
 }
+/* featured thought row: teal accent bar + author's label in the meta */
+li.feat a.item { position: relative; padding-left: 14px; }
+li.feat .bar {
+  position: absolute; left: 0; top: 14px; bottom: 16px; width: 4px;
+  border-radius: 999px; background: var(--teal);
+}
+li.feat .rec { color: var(--teal); font-weight: 500; }
+
 li.job { padding: 12px 0 14px; }
 .job .t { font-weight: 700; color: var(--title); }
 .job .role { color: var(--body); font-weight: 400; }

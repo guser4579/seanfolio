@@ -64,11 +64,18 @@ export default function Home() {
         </h2>
         <ul className="list">
           {THOUGHTS.map((t) => (
-            <li key={t.slug}>
+            <li key={t.slug} className={t.featured ? 'feat' : undefined}>
               <Link className="item" href={`/thoughts/${t.slug}`}>
+                {t.featured ? <span className="bar" aria-hidden="true" /> : null}
                 <span className="t">{t.title}</span>
                 {t.blurb ? <p className="blurb">{t.blurb}</p> : null}
                 <p className="g-meta">
+                  {t.featured ? (
+                    <>
+                      <span className="rec">{t.featured}</span>
+                      <span aria-hidden="true">•</span>
+                    </>
+                  ) : null}
                   <span>{t.topic}</span>
                   <span aria-hidden="true">•</span>
                   <span>{t.date}</span>
