@@ -439,6 +439,29 @@ a.skillfile-dl:hover { background: var(--btn-bg-hover); }
 .scrollpill .track { stroke: var(--line); }
 .scrollpill .arc { stroke: var(--title); }
 
+/* ---------- cross-link card (case studies -> how-i-work) ---------- */
+a.crosslink {
+  display: flex; align-items: stretch; gap: 12px;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 12px; padding: 12px 14px; margin: 0 0 24px;
+  text-decoration: none;
+}
+.crosslink .bar { width: 4px; border-radius: 999px; background: var(--blue); flex-shrink: 0; }
+.crosslink .tx { min-width: 0; }
+.crosslink .t { display: block; font-weight: 600; color: var(--title); font-size: 14px; line-height: 20px; }
+.crosslink .d { color: var(--muted); margin-top: 1px; font-size: 14px; line-height: 20px; }
+.crosslink .d .go { color: var(--link); font-weight: 500; }
+a.crosslink:hover .t { text-decoration: underline; text-underline-offset: 3px; }
+.crosslink .arr {
+  margin-left: auto; align-self: center; flex-shrink: 0;
+  width: 16px; height: 16px; color: var(--muted);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .crosslink .arr { transition: transform .15s ease; }
+}
+a.crosslink:hover .arr { transform: translateX(3px); color: var(--title); }
+@media (max-width: 480px) { .crosslink .arr { display: none; } }
+
 /* ---------- contact modal ---------- */
 .overlay {
   position: fixed; inset: 0; z-index: 90;

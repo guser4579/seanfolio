@@ -2,6 +2,7 @@ import Gate from '../../components/Gate';
 import { gateOpen } from '../../lib/gate';
 import { Fig, Band } from '../../components/Study';
 import StudyHero from '../../components/StudyHero';
+import StudyCrossLink from '../../components/StudyCrossLink';
 import ScrollProgress from '../../components/ScrollProgress';
 
 export const metadata = {
@@ -16,6 +17,8 @@ export default async function Page({ searchParams }) {
 
   return (
     <main id="main" className="study">
+      <StudyCrossLink />
+
       <StudyHero slug="coi" />
 
       <Fig
