@@ -484,7 +484,7 @@ a.skillfile-dl:hover { background: var(--btn-bg-hover); }
 .rows { display: flex; flex-direction: column; gap: 16px; } /* exactly 16px between rows */
 .row { display: flex; align-items: center; gap: 12px; padding: 0; }
 .row .label { color: var(--muted); }
-.row .value { margin-left: auto; font-weight: 600; color: var(--title); text-align: right; }
+.row .value { margin-left: auto; font-weight: 400; color: var(--title); text-align: right; }
 .row a.value.link { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
 .row a.value.plain { color: var(--title); text-decoration: none; }
 .modal .close-btn {
