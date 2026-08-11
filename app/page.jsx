@@ -11,8 +11,8 @@ export default function Home() {
             hi, i'm sean
           </h1>
           <p>
-            I am currently a design department of one at a software company
-            called{' '}
+            I am currently a design department of one at a compliance tech
+            company called{' '}
             <a href="https://www.foxen.com" target="_blank" rel="noopener noreferrer">
               Foxen
             </a>
@@ -33,6 +33,7 @@ export default function Home() {
               <span className="chip">🏃 running</span>
               <span className="chip">📕 reading</span>
               <span className="chip">✏️ writing</span>
+              <span className="chip">📈 markets</span>
               <span className="chip">👾 halo 3</span>
             </div>
           </div>
