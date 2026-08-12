@@ -216,13 +216,31 @@ export default function Header() {
               if (closing && e.target === modalRef.current) finishClose();
             }}
           >
-            <h2 id="contact-title">Contact</h2>
-            <p className="intro">
-              Feel free to reach out using the options below. Coffee is on me
-              if we're ever in the same city.
-            </p>
+            <div className="modal-head">
+              <span className="t" id="contact-title">Contact</span>
+              <span className="acts">
+                <span className="esc-hint" aria-hidden="true">[ESC] to close</span>
+                <button
+                  type="button"
+                  className="sq"
+                  ref={closeRef}
+                  onClick={requestClose}
+                  aria-label="Close contact dialog"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="m6 6 12 12" />
+                    <path d="M18 6 6 18" />
+                  </svg>
+                </button>
+              </span>
+            </div>
+            <div className="modal-body">
+              <p className="intro">
+                Feel free to reach out using the options below. Coffee is on me
+                if we're ever in the same city.
+              </p>
 
-            <div className="rows">
+              <div className="rows">
               <div className="row">
                 <span className="label">Email</span>
                 <button
@@ -251,15 +269,8 @@ export default function Header() {
                   Download
                 </a>
               </div>
+              </div>
             </div>
-
-            <button
-              className="close-btn"
-              ref={closeRef}
-              onClick={requestClose}
-            >
-              close
-            </button>
           </div>
         </>
       )}
