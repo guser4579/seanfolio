@@ -499,10 +499,10 @@ a.crosslink:hover .arr { transform: translateX(3px); color: var(--title); }
 }
 @media (max-width: 639px) {
   .modal {
-    /* compact floating bottom sheet: 24px side gutters, lifted off the bottom
+    /* compact floating bottom sheet: 16px side gutters, lifted off the bottom
        edge by 16px plus the iPhone home-indicator safe area */
-    inset: auto 24px calc(16px + env(safe-area-inset-bottom, 0px)) 24px;
-    padding: 16px; /* 16px inner padding on all four sides */
+    inset: auto 16px calc(16px + env(safe-area-inset-bottom, 0px)) 16px;
+    padding: 16px 16px 24px; /* extra room under the close button */
     border: 1px solid var(--line);
     border-radius: 24px;
     box-shadow: 0 8px 24px rgba(16, 17, 18, 0.18);
@@ -564,7 +564,7 @@ a.crosslink:hover .arr { transform: translateX(3px); color: var(--title); }
 }
 .modal .close-btn:hover { background: var(--btn-bg-hover); }
 @media (max-width: 639px) {
-  .modal .close-btn { margin-top: 40px; } /* last row bottom → close top */
+  .modal .close-btn { margin-top: 64px; } /* last row bottom → close top */
 }
 
 /* ---------- footer ---------- */
