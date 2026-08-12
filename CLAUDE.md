@@ -63,13 +63,27 @@ no staging branch; verify with npm run build locally before pushing.
 
 ### Contact modal (components/Header.jsx)
 
+- Same head grammar as the skill modal: hairline .modal-head with "Contact" at
+  chrome scale, "[ESC] to close" hint (desktop only), and a square X (.sq) on
+  both breakpoints. There is NO close pill. .modal-body scrolls under the
+  pinned head with 16px padding, 24px bottom.
 - Desktop: centered card, 560px, top 12%. Mobile: compact floating bottom
-  sheet - 16px side gutters, 16px + safe-area bottom offset, 16px inner
-  padding (24px bottom), 64px between the last row and the close button,
-  animated dismiss (is-closing until animationend, 350ms fallback).
-- The email row is a tap-to-copy button: text swaps to a green "copied"
+  sheet - 16px side gutters, 16px + safe-area bottom offset, animated dismiss
+  (is-closing until animationend, 350ms fallback).
+- The email row is a mono tap-to-copy button: text swaps to a green "copied"
   (swaptext animation, re-keyed both directions) and back after 1.4s. There is
   no mailto link.
+
+### Password gate (components/Gate.jsx)
+
+- Same generation: hairline .gate-head (muted lock icon + "Protected page" at
+  chrome scale), .gate-body with 16px padding (24px bottom). The submit is a
+  square arrow-right (.pw-submit) beside the input - no full-width pill - with
+  a "[ENTER] to unlock" hint (desktop only) mirroring the ESC language.
+- Back-navigation is intentional: the "back" breadcrumb uses real history when
+  the visitor arrived in-app (restores page + scroll); direct entries fall
+  through to a plain navigation home. Do not "fix" the scroll reset on fresh
+  entries - there is no prior state to restore.
 
 ### movemoney gallery
 
