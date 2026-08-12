@@ -37,6 +37,28 @@ export default function Header() {
 
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
+  const [emailCopied, setEmailCopied] = useState(false);
+  const emailTimer = useRef(null);
+
+  function copyEmail() {
+    const done = () => {
+      setEmailCopied(true);
+      clearTimeout(emailTimer.current);
+      emailTimer.current = setTimeout(() => setEmailCopied(false), 1400);
+    };
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(EMAIL).then(done).catch(() => {});
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = EMAIL;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); done(); } catch (e) {}
+      ta.remove();
+    }
+  }
 
   // On mobile the sheet plays a slide-down animation before unmounting
   // (.is-closing in globals.css); desktop and reduced-motion close at once.
@@ -203,9 +225,19 @@ export default function Header() {
             <div className="rows">
               <div className="row">
                 <span className="label">Email</span>
-                <a className="value plain" href={`mailto:${EMAIL}`}>
-                  {EMAIL}
-                </a>
+                <button
+                  type="button"
+                  className="value plain"
+                  onClick={copyEmail}
+                  aria-label={emailCopied ? 'Email copied' : `Copy email address ${EMAIL}`}
+                >
+                  <span
+                    key={emailCopied ? 'ok' : 'em'}
+                    className={emailCopied ? 'swaptext ok' : 'swaptext'}
+                  >
+                    {emailCopied ? 'copied' : EMAIL}
+                  </span>
+                </button>
               </div>
               <div className="row">
                 <span className="label">LinkedIn</span>

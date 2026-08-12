@@ -60,6 +60,7 @@ export default function SkillChip({ name, file, lines }) {
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [dled, setDled] = useState(false);
   const [text, setText] = useState(null);
   const [failed, setFailed] = useState(false);
   const [place, setPlace] = useState({ up: false, right: false });
@@ -70,6 +71,7 @@ export default function SkillChip({ name, file, lines }) {
   const peekPaneRef = useRef(null);
   const leaveTimer = useRef(null);
   const copyTimer = useRef(null);
+  const dlTimer = useRef(null);
 
   function ensureText() {
     if (text !== null || failed) return;
@@ -111,6 +113,7 @@ export default function SkillChip({ name, file, lines }) {
     setOpen(false);
     setClosing(false);
     setCopied(false);
+    setDled(false);
     chipRef.current?.focus();
   }
   useEffect(() => {
@@ -178,13 +181,33 @@ export default function SkillChip({ name, file, lines }) {
     updateFades(el);
   }
 
-  function onCopy() {
-    if (text === null || !navigator.clipboard) return;
-    navigator.clipboard.writeText(text).then(() => {
+  async function onCopy() {
+    try {
+      const t = text ?? (await loadFile(file));
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(t);
+      } else {
+        // clipboard API unavailable (older/insecure contexts): textarea fallback
+        const ta = document.createElement('textarea');
+        ta.value = t;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+      }
       setCopied(true);
       clearTimeout(copyTimer.current);
-      copyTimer.current = setTimeout(() => setCopied(false), 1600);
-    });
+      copyTimer.current = setTimeout(() => setCopied(false), 1400);
+    } catch (e) {}
+  }
+
+  // the <a download> does the real work; this just flashes the check
+  function onDownload() {
+    setDled(true);
+    clearTimeout(dlTimer.current);
+    dlTimer.current = setTimeout(() => setDled(false), 1400);
   }
 
   const body = failed
@@ -241,10 +264,20 @@ export default function SkillChip({ name, file, lines }) {
                     onClick={onCopy}
                     aria-label={copied ? 'Copied' : `Copy ${file} contents`}
                   >
-                    {copied ? <CheckIcon /> : <CopyIcon />}
+                    <span key={copied ? 'c1' : 'c0'} className={copied ? 'sq-ic ok' : 'sq-ic'} aria-hidden="true">
+                      {copied ? <CheckIcon /> : <CopyIcon />}
+                    </span>
                   </button>
-                  <a className="sq" href={`/skills/${file}`} download={file} aria-label={`Download ${file}`}>
-                    <DownloadIcon />
+                  <a
+                    className="sq"
+                    href={`/skills/${file}`}
+                    download={file}
+                    onClick={onDownload}
+                    aria-label={`Download ${file}`}
+                  >
+                    <span key={dled ? 'd1' : 'd0'} className={dled ? 'sq-ic ok' : 'sq-ic'} aria-hidden="true">
+                      {dled ? <CheckIcon /> : <DownloadIcon />}
+                    </span>
                   </a>
                 </span>
               </div>

@@ -300,17 +300,19 @@ main.col > .article-hero + * { margin-top: 0; }
   font-size: 18px; line-height: 24px; font-weight: 600; color: var(--body);
   margin: 44px 0 0; padding-bottom: 8px; border-bottom: 1px solid var(--line);
 }
-/* numbered section kickers: a small mono index in the work accent above each
-   h2, counted automatically per page (case studies only, not thought pieces) */
-main.study { counter-reset: sec; }
-main.study h2 { counter-increment: sec; }
-main.study h2::before {
+/* numbered section kickers: a small mono index above each h2, counted
+   automatically per page. Case studies number in the work accent (blue),
+   thought pieces in the thoughts accent (teal). */
+main.study, main.piece { counter-reset: sec; }
+main.study h2, main.piece h2 { counter-increment: sec; }
+main.study h2::before, main.piece h2::before {
   content: counter(sec, decimal-leading-zero);
   display: block;
   font: 500 12px/16px var(--mono); letter-spacing: .12em;
   color: var(--blue);
   margin-bottom: 4px;
 }
+main.piece h2::before { color: var(--teal); }
 .study h2 + p { margin-top: 14px; }
 .study h3 { font-size: 16px; line-height: 22px; font-weight: 600; color: var(--body); margin: 24px 0 0; }
 .study h3 + p { margin-top: 8px; }
@@ -398,7 +400,10 @@ main.study h2::before {
   background: var(--card); border: 1px solid var(--line); border-radius: 8px;
   padding: 2px 8px; margin: 0 1px; cursor: pointer;
 }
-.skillchip:hover { background: var(--band); border-color: color-mix(in srgb, var(--muted) 35%, var(--line)); }
+/* hover-capable devices only: touch taps must not leave a sticky hover state */
+@media (hover: hover) {
+  .skillchip:hover { background: var(--band); border-color: color-mix(in srgb, var(--muted) 35%, var(--line)); }
+}
 .skillchip .doc { flex-shrink: 0; width: 14px; height: 14px; color: var(--muted); }
 .skillchip .doc svg { width: 14px; height: 14px; display: block; }
 .skillchip .fmeta { color: var(--muted); font-size: 11px; }
@@ -477,8 +482,21 @@ main.study h2::before {
   background: var(--paper); border: 1px solid var(--line); border-radius: 8px;
   color: var(--muted); cursor: pointer;
 }
-.sq:hover { color: var(--title); background: var(--card); }
+@media (hover: hover) {
+  .sq:hover { color: var(--title); background: var(--card); }
+}
 .sq svg { width: 14px; height: 14px; display: block; }
+/* icon swap (copy/download -> check -> back): the wrapper is re-keyed on each
+   state change so the pop animation runs in both directions */
+.sq .sq-ic { display: block; }
+.sq .sq-ic.ok { color: var(--green); }
+@media (prefers-reduced-motion: no-preference) {
+  .sq .sq-ic { animation: icpop .18s ease-out; }
+}
+@keyframes icpop {
+  from { transform: scale(.55); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}
 .skillmodal .skillpane { flex: 1 1 auto; min-height: 0; padding-top: 12px; }
 @media (min-width: 640px) {
   .skillmodal {
@@ -676,6 +694,21 @@ a.crosslink:hover .arr { transform: translateX(3px); color: var(--title); }
 .row .value { margin-left: auto; font-weight: 400; color: var(--title); text-align: right; }
 .row a.value.link { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
 .row a.value.plain { color: var(--title); text-decoration: none; }
+/* email copies on tap; the text swaps to "copied" and back, re-keyed in
+   Header.jsx so the fade-up animation runs in both directions */
+button.value.plain {
+  font: inherit; background: none; border: 0; padding: 0; cursor: pointer;
+  color: var(--title);
+}
+.swaptext { display: inline-block; }
+.swaptext.ok { color: var(--green); }
+@media (prefers-reduced-motion: no-preference) {
+  .swaptext { animation: textswap .18s ease-out; }
+}
+@keyframes textswap {
+  from { transform: translateY(3px); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}
 .modal .close-btn {
   display: block; width: 100%;
   font: inherit; font-weight: 600; color: var(--btn-fg);
