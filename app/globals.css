@@ -354,20 +354,20 @@ main.col > .article-hero + * { margin-top: 0; }
   .screen-break { display: none; }
 }
 
-/* masked strip (movemoney): each screen in its own fixed mask sized to the
-   iPhone viewport aspect (375x812 -> 260x560, ~70% scale), hairline border,
-   article-component radius. The mask shows exactly one device-viewport of
-   each screen and crops the rest, so short modals and long scrolling pages
-   read as one uniform, scannable row. First/last auto margins center the
-   group when the viewport has room (same trick as .natural). */
+/* masked strip (movemoney): each screen in its own fixed-height frame
+   (560px), hairline border, article-component radius. The full screen fits
+   inside the frame with no cropping - width follows the image's aspect
+   ratio (uniform 750x1900 exports -> ~221px), so the row stays one even,
+   scannable height. First/last auto margins center the group when the
+   viewport has room (same trick as .natural). */
 .strip.masks { gap: 12px; align-items: flex-start; }
 .strip.masks > :first-child { margin-left: auto; }
 .strip.masks > :last-child { margin-right: auto; }
 .strip.masks .mask {
-  flex: 0 0 auto; width: 260px; height: 560px; overflow: hidden;
+  flex: 0 0 auto; height: 560px; overflow: hidden;
   background: var(--paper); border: 1px solid var(--line); border-radius: 12px;
 }
-.strip.masks .mask img { width: 100%; height: auto; display: block; }
+.strip.masks .mask img { height: 100%; width: auto; display: block; }
 
 /* ---------- skill file downloads (how-i-work) ---------- */
 /* 24px above; 23px below collapses with the next p's 14px and compensates for
