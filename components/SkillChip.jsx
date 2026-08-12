@@ -5,8 +5,8 @@ import { createPortal } from 'react-dom';
 
 // Inline skill-file chip (how-i-work). Desktop: hover opens a small scrollable
 // peek; click opens the full reading modal. Mobile: tap opens a bottom sheet
-// that grows with scroll until its top reaches ~35% of the viewport, leaving
-// room to tap out. File text is fetched once per session and shared.
+// at its full height (top at ~35% of the viewport, leaving room to tap out).
+// File text is fetched once per session and shared across chips.
 
 const fileCache = new Map();
 function loadFile(file) {
@@ -163,24 +163,6 @@ export default function SkillChip({ name, file, lines }) {
     updateFades(peekPaneRef.current);
   }, [text, open, peek]);
 
-  // Mobile: scroll grows the sheet before it scrolls the text. Scroll distance
-  // transfers into pane height until the sheet's top hits the 35% line; after
-  // that (or once content runs out) the pane scrolls normally.
-  function onPaneScroll(e) {
-    const el = e.currentTarget;
-    const st = el.scrollTop;
-    if (st > 0 && dialogRef.current && window.matchMedia('(max-width: 639px)').matches) {
-      const top = dialogRef.current.getBoundingClientRect().top;
-      const room = top - window.innerHeight * 0.35;
-      if (room > 1) {
-        const take = Math.min(st, room);
-        el.style.maxHeight = el.getBoundingClientRect().height + take + 'px';
-        el.scrollTop = st - take;
-      }
-    }
-    updateFades(el);
-  }
-
   async function onCopy() {
     try {
       const t = text ?? (await loadFile(file));
@@ -281,7 +263,7 @@ export default function SkillChip({ name, file, lines }) {
                   </a>
                 </span>
               </div>
-              <div className="skillpane" ref={paneRef} onScroll={onPaneScroll}>
+              <div className="skillpane" ref={paneRef} onScroll={(e) => updateFades(e.currentTarget)}>
                 <span className="mdtext">{body}</span>
               </div>
             </div>

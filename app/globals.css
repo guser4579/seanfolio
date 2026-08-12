@@ -323,13 +323,13 @@ main.piece h2::before { color: var(--teal); }
 .study .toolname { font-weight: 600; color: var(--title); }
 .formula { font-style: italic; color: var(--muted); }
 
+/* seamless full-bleed strips: no tint behind the framed screens, so every
+   gallery's frames sit directly on the page background (movemoney's
+   expression, applied to all case studies) */
 .band {
   width: 100vw; margin: 40px 0 0 calc(50% - 50vw);
-  background: var(--band); padding: 32px 0;
+  padding: 32px 0;
 }
-/* seamless band (movemoney gallery): no tint behind the framed screens, so
-   the frames sit directly on the page background */
-.band.band-plain { background: none; }
 
 @media (max-width: 680px) {
   /* mobile: bleed to the screen edges with fixed -16px margins instead of 100vw (100vw overflows iOS) */
@@ -456,9 +456,8 @@ main.piece h2::before { color: var(--teal); }
   to   { opacity: 1; transform: none; }
 }
 
-/* full reading modal: centered card on desktop, progressive bottom sheet on
-   mobile (the pane's max-height grows with scroll until the sheet top reaches
-   ~35% of the viewport - see SkillChip.jsx) */
+/* full reading modal: centered card on desktop, full-height bottom sheet on
+   mobile (top sits at ~35% of the viewport, leaving room to tap out) */
 .skillmodal {
   position: fixed; z-index: 91; background: var(--paper);
   display: flex; flex-direction: column;
@@ -510,11 +509,11 @@ main.piece h2::before { color: var(--teal); }
 @media (max-width: 639px) {
   .skillmodal {
     inset: auto 16px calc(16px + env(safe-area-inset-bottom, 0px)) 16px;
+    height: calc(65vh - 16px);
+    height: calc(65dvh - 16px - env(safe-area-inset-bottom, 0px));
     border-radius: 24px;
     box-shadow: 0 8px 24px rgba(16, 17, 18, 0.18);
   }
-  /* compact at launch; JS raises this cap as the user scrolls */
-  .skillmodal .skillpane { max-height: 34vh; max-height: 34dvh; }
   .esc-hint { display: none; }
 }
 @media (prefers-reduced-motion: no-preference) {
