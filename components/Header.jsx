@@ -36,6 +36,30 @@ export default function Header() {
   }
 
   const [open, setOpen] = useState(false);
+  const [closing, setClosing] = useState(false);
+
+  // On mobile the sheet plays a slide-down animation before unmounting
+  // (.is-closing in globals.css); desktop and reduced-motion close at once.
+  function requestClose() {
+    const animated =
+      window.matchMedia('(max-width: 639px)').matches &&
+      window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+    if (animated) setClosing(true);
+    else setOpen(false);
+  }
+
+  function finishClose() {
+    setOpen(false);
+    setClosing(false);
+  }
+
+  // Fallback in case animationend never fires (e.g. viewport crossed the
+  // 639px breakpoint mid-close, so no exit animation is running).
+  useEffect(() => {
+    if (!closing) return;
+    const t = setTimeout(finishClose, 350);
+    return () => clearTimeout(t);
+  }, [closing]);
 
   function toggleTheme() {
     const el = document.documentElement;
@@ -51,7 +75,7 @@ export default function Header() {
     if (!open) return;
     closeRef.current?.focus();
     function onKey(e) {
-      if (e.key === 'Escape') setOpen(false);
+      if (e.key === 'Escape') requestClose();
       if (e.key === 'Tab' && modalRef.current) {
         const f = modalRef.current.querySelectorAll('a, button');
         const first = f[0];
@@ -144,13 +168,19 @@ export default function Header() {
 
       {open && (
         <>
-          <div className="overlay" onClick={() => setOpen(false)} />
           <div
-            className="modal"
+            className={closing ? 'overlay is-closing' : 'overlay'}
+            onClick={requestClose}
+          />
+          <div
+            className={closing ? 'modal is-closing' : 'modal'}
             role="dialog"
             aria-modal="true"
             aria-labelledby="contact-title"
             ref={modalRef}
+            onAnimationEnd={(e) => {
+              if (closing && e.target === modalRef.current) finishClose();
+            }}
           >
             <h2 id="contact-title">Contact</h2>
             <p className="intro">
@@ -182,7 +212,7 @@ export default function Header() {
             <button
               className="close-btn"
               ref={closeRef}
-              onClick={() => setOpen(false)}
+              onClick={requestClose}
             >
               close
             </button>

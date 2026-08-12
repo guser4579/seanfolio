@@ -498,23 +498,53 @@ a.crosslink:hover .arr { transform: translateX(3px); color: var(--title); }
   }
 }
 @media (max-width: 639px) {
-  .modal { inset: 0; padding: 36px 16px 40px; } /* 40px below the close button */
+  .modal {
+    /* compact floating bottom sheet: 24px side gutters, lifted off the bottom
+       edge by 16px plus the iPhone home-indicator safe area */
+    inset: auto 24px calc(16px + env(safe-area-inset-bottom, 0px)) 24px;
+    padding: 16px; /* 16px inner padding on all four sides */
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    box-shadow: 0 8px 24px rgba(16, 17, 18, 0.18);
+    max-height: calc(100vh - 96px);
+    max-height: calc(100dvh - 96px);
+    overflow-y: auto;
+  }
 }
 @media (prefers-reduced-motion: no-preference) {
   @media (min-width: 640px) {
     .modal { animation: rise .2s ease-out; }
   }
   @media (max-width: 639px) {
-    .modal { animation: slideup .24s ease-out; }
+    .overlay { animation: fadein .24s ease-out; }
+    .modal { animation: sheetup .3s cubic-bezier(.32, .72, .35, 1); }
+    /* .is-closing is set by Header.jsx, which waits for animationend
+       before unmounting - forwards keeps the final frame meanwhile */
+    .overlay.is-closing { animation: fadeout .2s ease-in forwards; }
+    .modal.is-closing { animation: sheetdown .22s ease-in forwards; }
   }
 }
 @keyframes rise {
   from { opacity: 0; transform: translate(-50%, 10px); }
   to   { opacity: 1; transform: translate(-50%, 0); }
 }
-@keyframes slideup {
-  from { transform: translateY(28px); opacity: .7; }
-  to   { transform: none; opacity: 1; }
+/* travel overshoots the sheet's own height so it clears the bottom offset
+   (16px + safe area) and the shadow before unmount */
+@keyframes sheetup {
+  from { transform: translateY(calc(100% + 80px)); }
+  to   { transform: none; }
+}
+@keyframes sheetdown {
+  from { transform: none; }
+  to   { transform: translateY(calc(100% + 80px)); }
+}
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes fadeout {
+  from { opacity: 1; }
+  to   { opacity: 0; }
 }
 .modal h2 { font-size: 20px; line-height: 28px; font-weight: 600; color: var(--title); margin: 0 0 4px; }
 .modal .intro { margin: 0 0 20px; }
@@ -534,7 +564,7 @@ a.crosslink:hover .arr { transform: translateX(3px); color: var(--title); }
 }
 .modal .close-btn:hover { background: var(--btn-bg-hover); }
 @media (max-width: 639px) {
-  .modal .close-btn { margin-top: auto; } /* pinned to bottom on mobile */
+  .modal .close-btn { margin-top: 40px; } /* last row bottom → close top */
 }
 
 /* ---------- footer ---------- */
