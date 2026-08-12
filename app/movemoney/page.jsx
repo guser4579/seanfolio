@@ -144,46 +144,68 @@ export default function Page() {
         images={[
           {
             src: '/media/movemoney/home.png',
+            w: 375,
+            h: 1622,
             alt: 'home screen with balance, cash deposit retailers, suggested contacts, and referral card',
           },
           {
             src: '/media/movemoney/rates.png',
+            w: 375,
+            h: 996,
             alt: 'rates modal converting a $1,000 deposit to MXN pesos with savings called out',
           },
           {
             src: '/media/movemoney/deposit-steps.png',
+            w: 375,
+            h: 977,
             alt: 'three-step visual instruction for making a cash deposit at Walgreens, with the deposit limit stated',
           },
           {
             src: '/media/movemoney/deposit-barcode.png',
+            w: 375,
+            h: 977,
             alt: 'barcode screen with deposit amount range and How To and Directions actions',
           },
           {
             src: '/media/movemoney/claim-welcome.png',
+            w: 375,
+            h: 1245,
             alt: 'incoming payment screen leading with the sender, the amount, a personal message, and numbered claim instructions',
           },
           {
             src: '/media/movemoney/send-reminder.png',
+            w: 375,
+            h: 1202,
             alt: 'send reminder screen with a shareable claim link and transaction details',
           },
           {
             src: '/media/movemoney/activity.png',
+            w: 375,
+            h: 1430,
             alt: 'activity feed with a required action flagged on an unclaimed transfer',
           },
           {
             src: '/media/movemoney/activity-filtered.png',
+            w: 375,
+            h: 901,
             alt: 'activity feed filtered to transfers requiring action',
           },
           {
             src: '/media/movemoney/contacts.png',
+            w: 375,
+            h: 904,
             alt: 'contact list of recipients in Mexico',
           },
           {
             src: '/media/movemoney/invite-es.png',
+            w: 375,
+            h: 904,
             alt: 'Spanish-language referral invite screen',
           },
           {
             src: '/media/movemoney/home-es.png',
+            w: 375,
+            h: 1430,
             alt: 'Spanish-language home screen with referral rewards and pending invitations',
           },
         ]}

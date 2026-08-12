@@ -28,9 +28,9 @@ export function Band({ label = 'Filmstrip of screens', count = 5, images, breakA
     return (
       <div className="band" role="group" aria-label={label}>
         <div className="strip masks">
-          {images.map(({ src, alt }) => (
+          {images.map(({ src, alt, w, h }) => (
             <div className="mask" key={src}>
-              <img src={src} alt={alt} loading="lazy" />
+              <img src={src} alt={alt} width={w} height={h} loading="lazy" />
             </div>
           ))}
         </div>
