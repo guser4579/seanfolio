@@ -37,7 +37,6 @@ export default function Gate({ returnTo, error }) {
               </svg>
             </button>
           </div>
-          <p className="esc-hint enter-hint" aria-hidden="true">[ENTER] to unlock</p>
           {error ? (
             <p className="err" id="pw-err" role="alert">
               That password isn't right - check for typos, or email me for

@@ -571,12 +571,6 @@ main.piece h2::before { color: var(--teal); }
   .pw-submit:hover { color: var(--title); background: var(--card); }
 }
 .pw-submit svg { width: 16px; height: 16px; display: block; }
-/* mirrors "[ESC] to close": the .esc-hint class carries the styling and the
-   under-640px hiding; this just makes it a block with breathing room */
-.gate .enter-hint { display: block; margin: 10px 0 0; }
-@media (max-width: 639px) {
-  .gate .enter-hint { display: none; }
-}
 .gate .err { margin: 10px 0 0; color: var(--error); }
 
 /* ---------- thought piece ---------- */

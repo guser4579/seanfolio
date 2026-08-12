@@ -78,8 +78,8 @@ no staging branch; verify with npm run build locally before pushing.
 
 - Same generation: hairline .gate-head (muted lock icon + "Protected page" at
   chrome scale), .gate-body with 16px padding (24px bottom). The submit is a
-  square arrow-right (.pw-submit) beside the input - no full-width pill - with
-  a "[ENTER] to unlock" hint (desktop only) mirroring the ESC language.
+  square arrow-right (.pw-submit) beside the input - no full-width pill and no
+  key hint (Enter still submits; Sean removed the "[ENTER] to unlock" text).
 - Back-navigation is intentional: the "back" breadcrumb uses real history when
   the visitor arrived in-app (restores page + scroll); direct entries fall
   through to a plain navigation home. Do not "fix" the scroll reset on fresh
