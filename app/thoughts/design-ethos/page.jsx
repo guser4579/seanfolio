@@ -40,6 +40,10 @@ export default function Page() {
           change it.
         </li>
         <li>Decisions move at the speed of information.</li>
+        <li>
+          A vendor's ability to dictate pricing terms is a function of the
+          vendor's percent share of the market.
+        </li>
         <li>The world is in a constant push toward homogeny.</li>
         <li>SpongeBob is a trend line of culture.</li>
       </ul>
