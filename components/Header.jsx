@@ -64,8 +64,20 @@ export default function Header() {
   function toggleTheme() {
     const el = document.documentElement;
     const next = el.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    el.setAttribute('data-theme', next);
-    try { localStorage.setItem('folio-theme', next); } catch (e) {}
+    const apply = () => {
+      el.setAttribute('data-theme', next);
+      try { localStorage.setItem('folio-theme', next); } catch (e) {}
+    };
+    // Cross-fade the whole page via the View Transitions API; .vt-theme
+    // suppresses the body's own bg transition so the fade isn't doubled.
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !document.startViewTransition) {
+      apply();
+      return;
+    }
+    el.classList.add('vt-theme');
+    const t = document.startViewTransition(apply);
+    t.finished.finally(() => el.classList.remove('vt-theme'));
   }
   const closeRef = useRef(null);
   const triggerRef = useRef(null);

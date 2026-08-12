@@ -26,7 +26,7 @@ export function Band({ label = 'Filmstrip of screens', count = 5, images, breakA
   // the row uniform.
   if (images && layout === 'mask') {
     return (
-      <div className="band" role="group" aria-label={label}>
+      <div className="band band-plain" role="group" aria-label={label}>
         <div className="strip masks">
           {images.map(({ src, alt, w, h }) => (
             <div className="mask" key={src}>

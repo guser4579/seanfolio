@@ -24,6 +24,8 @@
 
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu,
           Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Cascadia Mono",
+          Consolas, monospace;
 
   /* component + theme tokens */
   --btn-bg: #000000;
@@ -71,6 +73,11 @@ body {
 @media (prefers-reduced-motion: no-preference) {
   body { transition: background .2s ease, color .2s ease; }
 }
+/* theme toggle cross-fade (View Transitions API). While the transition runs,
+   Header.jsx sets .vt-theme on <html>; the body's own bg transition is
+   suppressed so the fade isn't applied twice */
+.vt-theme body { transition: none; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .22s; }
 main { flex: 1 1 auto; }
 
 a:focus-visible, button:focus-visible, input:focus-visible {
@@ -293,6 +300,17 @@ main.col > .article-hero + * { margin-top: 0; }
   font-size: 18px; line-height: 24px; font-weight: 600; color: var(--body);
   margin: 44px 0 0; padding-bottom: 8px; border-bottom: 1px solid var(--line);
 }
+/* numbered section kickers: a small mono index in the work accent above each
+   h2, counted automatically per page (case studies only, not thought pieces) */
+main.study { counter-reset: sec; }
+main.study h2 { counter-increment: sec; }
+main.study h2::before {
+  content: counter(sec, decimal-leading-zero);
+  display: block;
+  font: 500 12px/16px var(--mono); letter-spacing: .12em;
+  color: var(--blue);
+  margin-bottom: 4px;
+}
 .study h2 + p { margin-top: 14px; }
 .study h3 { font-size: 16px; line-height: 22px; font-weight: 600; color: var(--body); margin: 24px 0 0; }
 .study h3 + p { margin-top: 8px; }
@@ -307,6 +325,9 @@ main.col > .article-hero + * { margin-top: 0; }
   width: 100vw; margin: 40px 0 0 calc(50% - 50vw);
   background: var(--band); padding: 32px 0;
 }
+/* seamless band (movemoney gallery): no tint behind the framed screens, so
+   the frames sit directly on the page background */
+.band.band-plain { background: none; }
 
 @media (max-width: 680px) {
   /* mobile: bleed to the screen edges with fixed -16px margins instead of 100vw (100vw overflows iOS) */
@@ -369,29 +390,124 @@ main.col > .article-hero + * { margin-top: 0; }
 }
 .strip.masks .mask img { height: 100%; width: auto; display: block; }
 
-/* ---------- skill file downloads (how-i-work) ---------- */
-/* 24px above; 23px below collapses with the next p's 14px and compensates for
-   the ~1px extra dead space above glyph ink vs below it (16/24 line box), so
-   the gaps above and below the card group RENDER as visually identical */
-.skillfiles { margin: 24px 0 23px; display: flex; flex-direction: column; gap: 10px; }
-.skillfile {
-  display: flex; align-items: center; gap: 14px;
-  background: var(--card); border: 1px solid var(--line);
-  border-radius: 12px; padding: 12px 14px;
+/* ---------- inline skill-file chips (how-i-work) ---------- */
+.skillchip-wrap { position: relative; display: inline-block; vertical-align: baseline; }
+.skillchip {
+  display: inline-flex; align-items: center; gap: 6px; max-width: 100%;
+  font: 500 13px/18px var(--mono); color: var(--title);
+  background: var(--card); border: 1px solid var(--line); border-radius: 8px;
+  padding: 2px 8px; margin: 0 1px; cursor: pointer;
 }
-.skillfile .doc { flex-shrink: 0; width: 20px; height: 20px; color: var(--muted); }
-.skillfile .doc svg { width: 20px; height: 20px; display: block; }
-.skillfile .info { flex: 1 1 auto; min-width: 0; }
-.skillfile .t { font-weight: 600; color: var(--title); font-size: 14px; line-height: 20px; display: block; }
-.skillfile .meta { margin: 1px 0 0; color: var(--muted); font-size: 14px; line-height: 20px; }
-a.skillfile-dl {
-  flex-shrink: 0; display: inline-flex; align-items: center;
-  background: var(--btn-bg); color: var(--btn-fg);
-  border-radius: 10px; text-decoration: none;
-  padding: 7px 12px; margin-left: 10px;
-  font-size: 14px; line-height: 20px; font-weight: 600;
+.skillchip:hover { background: var(--band); border-color: color-mix(in srgb, var(--muted) 35%, var(--line)); }
+.skillchip .doc { flex-shrink: 0; width: 14px; height: 14px; color: var(--muted); }
+.skillchip .doc svg { width: 14px; height: 14px; display: block; }
+.skillchip .fmeta { color: var(--muted); font-size: 11px; }
+
+/* shared reading pane: raw markdown in mono, scroll fades via mask. .ft/.fb
+   are toggled from JS as the pane becomes scrollable in each direction, so
+   text gradually "disappears" at whichever edge has more content */
+.skillpane {
+  display: block; overflow-y: auto; overscroll-behavior: contain;
+  padding: 0 16px; scrollbar-width: thin;
 }
-a.skillfile-dl:hover { background: var(--btn-bg-hover); }
+.skillpane .mdtext {
+  display: block; margin: 0; padding: 2px 0 14px;
+  font-family: var(--mono); font-size: 12.5px; line-height: 19px;
+  white-space: pre-wrap; overflow-wrap: break-word; color: var(--body);
+}
+.skillpane.ft {
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 32px);
+  mask-image: linear-gradient(180deg, transparent 0, #000 32px);
+}
+.skillpane.fb {
+  -webkit-mask-image: linear-gradient(180deg, #000 calc(100% - 32px), transparent 100%);
+  mask-image: linear-gradient(180deg, #000 calc(100% - 32px), transparent 100%);
+}
+.skillpane.ft.fb {
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 32px, #000 calc(100% - 32px), transparent 100%);
+  mask-image: linear-gradient(180deg, transparent 0, #000 32px, #000 calc(100% - 32px), transparent 100%);
+}
+
+/* hover peek (desktop pointer devices only; opened from JS) */
+.skillpeek {
+  position: absolute; left: 0; top: calc(100% + 8px); z-index: 60;
+  display: block; width: min(430px, calc(100vw - 48px));
+  background: var(--paper); border: 1px solid var(--line); border-radius: 16px;
+  box-shadow: 0 16px 48px rgba(16, 17, 18, 0.16);
+  padding-top: 12px;
+}
+.skillpeek.up { top: auto; bottom: calc(100% + 8px); }
+.skillpeek.right { left: auto; right: 0; }
+.skillpeek .skillpane { max-height: 300px; }
+.peek-hint {
+  display: block; padding: 8px 16px 12px;
+  color: var(--muted); font-size: 12px; line-height: 16px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .skillpeek { animation: peekin .15s ease-out; }
+}
+@keyframes peekin {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* full reading modal: centered card on desktop, progressive bottom sheet on
+   mobile (the pane's max-height grows with scroll until the sheet top reaches
+   ~35% of the viewport - see SkillChip.jsx) */
+.skillmodal {
+  position: fixed; z-index: 91; background: var(--paper);
+  display: flex; flex-direction: column;
+  border: 1px solid var(--line);
+}
+.skillmodal-head {
+  display: flex; align-items: center; gap: 8px; flex-shrink: 0;
+  padding: 12px 16px; border-bottom: 1px solid var(--line);
+}
+.skillmodal-head .doc { flex-shrink: 0; width: 16px; height: 16px; color: var(--muted); }
+.skillmodal-head .doc svg { width: 16px; height: 16px; display: block; }
+.skillmodal-head .fname {
+  font-family: var(--mono); font-size: 13px; color: var(--title);
+  min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.skillmodal-head .acts { margin-left: auto; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.esc-hint { color: var(--muted); font-size: 12px; letter-spacing: .04em; margin-right: 4px; }
+.sq {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; padding: 0; flex-shrink: 0;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 8px;
+  color: var(--muted); cursor: pointer;
+}
+.sq:hover { color: var(--title); background: var(--card); }
+.sq svg { width: 14px; height: 14px; display: block; }
+.skillmodal .skillpane { flex: 1 1 auto; min-height: 0; padding-top: 12px; }
+@media (min-width: 640px) {
+  .skillmodal {
+    top: 12%; left: 50%; transform: translateX(-50%);
+    width: 680px; max-width: calc(100vw - 48px);
+    max-height: 76vh;
+    border-radius: 24px;
+    box-shadow: 0 24px 64px rgba(16, 17, 18, 0.18);
+  }
+}
+@media (max-width: 639px) {
+  .skillmodal {
+    inset: auto 16px calc(16px + env(safe-area-inset-bottom, 0px)) 16px;
+    border-radius: 24px;
+    box-shadow: 0 8px 24px rgba(16, 17, 18, 0.18);
+  }
+  /* compact at launch; JS raises this cap as the user scrolls */
+  .skillmodal .skillpane { max-height: 34vh; max-height: 34dvh; }
+  .esc-hint { display: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  @media (min-width: 640px) {
+    .skillmodal { animation: rise .2s ease-out; }
+  }
+  @media (max-width: 639px) {
+    .skillmodal { animation: sheetup .3s cubic-bezier(.32, .72, .35, 1); }
+    .skillmodal.is-closing { animation: sheetdown .22s ease-in forwards; }
+  }
+}
 
 /* ---------- gate ---------- */
 .gate {
@@ -452,6 +568,12 @@ a.skillfile-dl:hover { background: var(--btn-bg-hover); }
 .scrollpill svg { width: 24px; height: 24px; display: block; flex-shrink: 0; }
 .scrollpill .track { stroke: var(--line); }
 .scrollpill .arc { stroke: var(--title); }
+/* mono percentage in a fixed 4ch slot ("100%"), right-aligned against
+   "complete", so the pill never changes width as the number ticks */
+.scrollpill .pct {
+  font-family: var(--mono); font-size: 15px;
+  display: inline-block; min-width: 4ch; text-align: right;
+}
 
 /* ---------- cross-link card (case studies -> how-i-work) ---------- */
 a.crosslink {

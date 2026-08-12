@@ -1,10 +1,18 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import StudyHero from '../../components/StudyHero';
-import SkillFile from '../../components/SkillFile';
+import SkillChip from '../../components/SkillChip';
 import ScrollProgress from '../../components/ScrollProgress';
 
 export const metadata = {
   title: 'How I run design at Foxen',
 };
+
+// line counts for the chip labels, read from the real files at build time
+const skillLines = (file) =>
+  readFileSync(join(process.cwd(), 'public', 'skills', file), 'utf8')
+    .trimEnd()
+    .split('\n').length;
 
 export default function Page() {
   return (
@@ -131,32 +139,43 @@ export default function Page() {
       </p>
       <ol>
         <li>
-          A UX_Principles_Skill encodes why our decisions are what they are,
-          so that an engineer's Claude instance interprets intent with a
-          higher degree of accuracy instead of guessing at it.
+          A{' '}
+          <SkillChip
+            name="UX_Principles_Skill"
+            file="ux-principles.md"
+            lines={skillLines('ux-principles.md')}
+          />{' '}
+          encodes why our decisions are what they are, so that an engineer's
+          Claude instance interprets intent with a higher degree of accuracy
+          instead of guessing at it.
         </li>
         <li>
-          A UI_Skill acts as a pseudo component library, with tokens loaded in
-          and rules made explicit. This serves as the boundary a coding agent
-          operates within, and as the source of truth when the component
-          library drifts.
+          A{' '}
+          <SkillChip
+            name="UI_Skill"
+            file="ui-reference.md"
+            lines={skillLines('ui-reference.md')}
+          />{' '}
+          acts as a pseudo component library, with tokens loaded in and rules
+          made explicit. This serves as the boundary a coding agent operates
+          within, and as the source of truth when the component library
+          drifts.
         </li>
         <li>
-          A Design_Review_Skill that is required to pass as part of an
-          engineer's ticket's acceptance criteria for all front end work. This
-          file checks an engineer's build against hard coded rules, identifies
-          the gaps, and prompts the same agent to actually implement the fix
-          before it ever reaches me. I built this one after noticing I was
-          making the same review comments over and over to different
-          engineers.
+          A{' '}
+          <SkillChip
+            name="Design_Review_Skill"
+            file="design-self-review.md"
+            lines={skillLines('design-self-review.md')}
+          />{' '}
+          that is required to pass as part of an engineer's ticket's
+          acceptance criteria for all front end work. This file checks an
+          engineer's build against hard coded rules, identifies the gaps, and
+          prompts the same agent to actually implement the fix before it ever
+          reaches me. I built this one after noticing I was making the same
+          review comments over and over to different engineers.
         </li>
       </ol>
-
-      <div className="skillfiles" role="group" aria-label="Genericized skill files">
-        <SkillFile name="UX_Principles_Skill" file="ux-principles.md" />
-        <SkillFile name="UI_Skill" file="ui-reference.md" />
-        <SkillFile name="Design_Review_Skill" file="design-self-review.md" />
-      </div>
 
       <p>
         The results have been significant. Getting a design's implementation
@@ -168,7 +187,13 @@ export default function Page() {
       </p>
       <p>
         My own work, before a design has ever been created, runs through a
-        fourth Design_Discovery_Skill. Because I look at design as the
+        fourth{' '}
+        <SkillChip
+          name="Design_Discovery_Skill"
+          file="design-discovery.md"
+          lines={skillLines('design-discovery.md')}
+        />
+        . Because I look at design as the
         understanding of a problem and its context expressed through an
         interface, a design's goodness is simply a function of the extent to
         which the problem was understood. The design discovery skill is an
@@ -179,10 +204,6 @@ export default function Page() {
         problem is actually understood. From there it is rough mocks, quick
         stakeholder feedback, final polish in Figma, and then engineering.
       </p>
-
-      <div className="skillfiles" role="group" aria-label="Design discovery skill file">
-        <SkillFile name="Design_Discovery_Skill" file="design-discovery.md" />
-      </div>
 
       <h2>What AI does here, and what it does not</h2>
       <p>

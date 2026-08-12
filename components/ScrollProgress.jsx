@@ -62,7 +62,9 @@ export default function ScrollProgress() {
           transform="rotate(-90 12 12)"
         />
       </svg>
-      <span>{pct}% complete</span>
+      <span>
+        <span className="pct">{pct}%</span> complete
+      </span>
     </div>
   );
 }
