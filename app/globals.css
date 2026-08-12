@@ -463,6 +463,9 @@ main.piece h2::before { color: var(--teal); }
   display: flex; flex-direction: column;
   border: 1px solid var(--line);
 }
+/* the dialog container is programmatically focused on open (for Esc capture
+   and screen readers); never show a focus ring on the sheet itself */
+.skillmodal:focus, .skillmodal:focus-visible { outline: none; }
 .skillmodal-head {
   display: flex; align-items: center; gap: 8px; flex-shrink: 0;
   padding: 12px 16px; border-bottom: 1px solid var(--line);

@@ -17,23 +17,68 @@ no staging branch; verify with npm run build locally before pushing.
   CASE_STUDY_PASSWORD env var. design-at-foxen and movemoney are public.
 - components/Header.jsx: BACK_ROUTES lists every route that shows the "back"
   breadcrumb instead of the primary nav. New case studies must be added there.
+- Skill files live in public/skills/*.md and render as inline SkillChip
+  components in /design-at-foxen prose (see Design conventions). The page reads
+  each file's line count with fs at build time; chip text is fetched from
+  /skills/<file> on demand and cached per session.
 - readTime is manual: 200 wpm, rounded up, min 1, counted over headings + body
   prose only. Recompute by hand when copy changes materially.
 
 ## Design conventions
 
-- Tokens in app/globals.css, light/dark via [data-theme] on <html>.
+- Tokens in app/globals.css, light/dark via [data-theme] on <html>. --mono is
+  the mono stack, used for skill-file text, chip labels, section kickers, and
+  the scroll-pill percentage.
 - Accents: red #FF383C (hero/bio), blue #0088FF (my work), teal #00C8B3
   (thoughts). Featured thought = teal bar + "my favorite" token (li.feat).
-- Radius: 12px for article-scale components, 999px pills. Hairline dividers
-  use 1px var(--line); study/thought h2s carry a border-bottom hairline.
+- Radius: 12px for article-scale components, 24px for modals/sheets, 999px
+  pills. Hairline dividers use 1px var(--line); study/thought h2s carry a
+  border-bottom hairline.
 - Type: chrome 14/20, article prose 16/24, study h1 22/30, h2 18/24.
-- movemoney gallery: Band layout="mask" renders each screen in a 560px-tall
-  bordered frame (12px radius); width follows the image aspect so the full
-  screen is visible, no cropping. Images live in public/media/movemoney/
-  (mm1.png-mm12.png, 750x1900 2x exports, ordered mm1->mm12). Do NOT add
-  loading="lazy" to these imgs - Chrome silently never fetched them; they are
-  intentionally eager. Always give gallery imgs explicit width/height attrs.
+- Numbered section kickers: every h2 in main.study and main.piece gets an
+  automatic mono index ("01", "02"...) via CSS counters - blue on case
+  studies, teal on thought pieces. No per-page markup; it just counts h2s.
+- Full-bleed strips (.band) have NO background tint - frames sit directly on
+  the page background in both themes. Do not reintroduce var(--band) there.
+- Hover styles for touch-reachable components (.skillchip, .sq) are gated
+  behind @media (hover: hover) so taps never leave a sticky hover state.
+- Theme toggle cross-fades via the View Transitions API (Header.jsx); .vt-theme
+  on <html> suppresses the body transition during it. Guarded by
+  prefers-reduced-motion, like every animation in the file.
+
+### Skill-file chips (components/SkillChip.jsx)
+
+- Desktop: hover opens a scrollable mono peek with edge fade masks and a
+  "click to read all N lines" hint; click opens a centered reading modal
+  (680px, top 12%) with copy + download square icon buttons (.sq) and a subtle
+  "[ESC] to close" hint. Copy/download flash a green check (icpop, re-keyed
+  both directions) before reverting.
+- Mobile: tap opens a full-height bottom sheet immediately - top at ~35% of
+  the viewport (no progressive growth), 16px gutters, 16px + safe-area bottom
+  offset, same slide-up/slide-down animations as the contact sheet. No ESC
+  hint on mobile. The dialog container is programmatically focused on open;
+  .skillmodal:focus outline is suppressed so no focus ring shows on tap.
+- Scroll fades: .ft/.fb classes toggled from JS drive mask-image gradients so
+  text gradually disappears at scrollable edges.
+
+### Contact modal (components/Header.jsx)
+
+- Desktop: centered card, 560px, top 12%. Mobile: compact floating bottom
+  sheet - 16px side gutters, 16px + safe-area bottom offset, 16px inner
+  padding (24px bottom), 64px between the last row and the close button,
+  animated dismiss (is-closing until animationend, 350ms fallback).
+- The email row is a tap-to-copy button: text swaps to a green "copied"
+  (swaptext animation, re-keyed both directions) and back after 1.4s. There is
+  no mailto link.
+
+### movemoney gallery
+
+- Band layout="mask" renders each screen in a 560px-tall bordered frame (12px
+  radius); width follows the image aspect so the full screen is visible, no
+  cropping. Images live in public/media/movemoney/ (mm1.png-mm12.png, 750x1900
+  2x exports, ordered mm1->mm12). Do NOT add loading="lazy" to these imgs -
+  Chrome silently never fetched them; they are intentionally eager. Always
+  give gallery imgs explicit width/height attrs.
 
 ## Writing rules (hard rules)
 
