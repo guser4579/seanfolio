@@ -354,6 +354,20 @@ main.col > .article-hero + * { margin-top: 0; }
   .screen-break { display: none; }
 }
 
+/* masked strip (movemoney): each screen in its own 900px-tall mask at the
+   screen's logical width (375px), hairline border, article-component radius.
+   Screens taller than the mask crop at its bottom edge, so short modals and
+   long scrolling pages read as one uniform row. First/last auto margins
+   center the group when the viewport has room (same trick as .natural). */
+.strip.masks { gap: 12px; align-items: flex-start; }
+.strip.masks > :first-child { margin-left: auto; }
+.strip.masks > :last-child { margin-right: auto; }
+.strip.masks .mask {
+  flex: 0 0 auto; width: 375px; height: 900px; overflow: hidden;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 12px;
+}
+.strip.masks .mask img { width: 100%; height: auto; display: block; }
+
 /* ---------- skill file downloads (how-i-work) ---------- */
 /* 24px above; 23px below collapses with the next p's 14px and compensates for
    the ~1px extra dead space above glyph ink vs below it (16/24 line box), so

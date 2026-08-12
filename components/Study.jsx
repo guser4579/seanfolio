@@ -20,6 +20,23 @@ export function Fig({ caption, ph, phClass = 'shot', src, alt, natural }) {
 }
 
 export function Band({ label = 'Filmstrip of screens', count = 5, images, breakAfter, layout }) {
+  // mask: every screen sits in its own fixed-height mask (900px) at the
+  // screen's logical width, with a hairline border and the article-component
+  // radius. Taller scrolling screens crop at the mask's bottom edge, keeping
+  // the row uniform.
+  if (images && layout === 'mask') {
+    return (
+      <div className="band" role="group" aria-label={label}>
+        <div className="strip masks">
+          {images.map(({ src, alt }) => (
+            <div className="mask" key={src}>
+              <img src={src} alt={alt} loading="lazy" />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
   // natural: images at a fixed modest size, top-aligned, centered as a group
   // when the viewport has room, horizontal scroll when it does not. The
   // images carry their own card styling (baked-in corners/shadows) - no chrome.
