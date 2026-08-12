@@ -30,7 +30,7 @@ export function Band({ label = 'Filmstrip of screens', count = 5, images, breakA
         <div className="strip masks">
           {images.map(({ src, alt, w, h }) => (
             <div className="mask" key={src}>
-              <img src={src} alt={alt} width={w} height={h} loading="lazy" />
+              <img src={src} alt={alt} width={w} height={h} />
             </div>
           ))}
         </div>
