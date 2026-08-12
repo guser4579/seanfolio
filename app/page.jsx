@@ -1,5 +1,16 @@
 import Link from 'next/link';
+import InfoChip from '../components/InfoChip';
 import { WORK, THOUGHTS, JOBS } from '../lib/data';
+
+const FOXEN_ABOUT =
+  'Foxen is a proptech company that builds software and ' +
+  'financial products for the multifamily housing industry. Its platform ' +
+  'helps property owners and operators reduce risk, improve compliance, and ' +
+  'generate additional revenue through products for renters insurance ' +
+  'compliance, rent reporting and credit building, and pet management. ' +
+  'Founded in 2018, Foxen primarily serves large property management ' +
+  'companies and real estate owners while also building resident-facing ' +
+  'experiences used by their tenants.';
 
 export default function Home() {
   return (
@@ -13,9 +24,12 @@ export default function Home() {
           <p>
             I am currently a design department of one at a compliance tech
             company called{' '}
-            <a href="https://www.foxen.com" target="_blank" rel="noopener noreferrer">
-              Foxen
-            </a>
+            <InfoChip
+              label="Foxen"
+              text={FOXEN_ABOUT}
+              href="https://www.foxen.com"
+              hrefLabel="Visit foxen.com"
+            />
             . Here, I am focused on balancing the IC design needs of the
             product teams I serve and establishing the systems and strategy
             that make that possible.
