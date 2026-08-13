@@ -387,7 +387,7 @@ main.piece h2::before { color: var(--teal); }
 .strip.masks > :first-child { margin-left: auto; }
 .strip.masks > :last-child { margin-right: auto; }
 .strip.masks .mask {
-  flex: 0 0 auto; height: 560px; overflow: hidden;
+  flex: 0 0 auto; height: var(--maskh, 560px); overflow: hidden;
   background: var(--paper); border: 1px solid var(--line); border-radius: 12px;
 }
 .strip.masks .mask img { height: 100%; width: auto; display: block; }

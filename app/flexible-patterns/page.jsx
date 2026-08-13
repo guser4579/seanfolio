@@ -133,31 +133,51 @@ export default async function Page({ searchParams }) {
       />
 
       <Band
-        label="The exception review loop, from detection to resolution"
+        label="The screening flow, from the property's queue to the resident's fix"
+        layout="mask"
+        frameHeight="440px"
         images={[
           {
-            src: '/media/flexible-patterns/filmstrip-1.png',
-            alt: 'ESA letter flagged with two detected errors and a recommendation to request a new document',
-            w: 1000,
-            h: 2004,
+            src: '/media/flexible-patterns/cs-0.png',
+            alt: 'application screening dashboard with attention required, pending review, and getting cold queues above the completed applications table',
+            w: 1913,
+            h: 1152,
           },
           {
-            src: '/media/flexible-patterns/filmstrip-2.png',
-            alt: 'application waiting on the resident after a new document was requested',
-            w: 1000,
-            h: 1520,
+            src: '/media/flexible-patterns/cs-1.png',
+            alt: 'property manager selecting animal fields on a PetClear record to request edits, with a pending requests panel ready to submit',
+            w: 1913,
+            h: 1153,
           },
           {
-            src: '/media/flexible-patterns/filmstrip-3.png',
-            alt: 'application approved after the corrected document passed analysis',
-            w: 1000,
-            h: 1464,
+            src: '/media/flexible-patterns/cs-2.png',
+            alt: 'the same record after submitting: an edits requested banner confirms the resident was contacted and the application moves to outstanding',
+            w: 1912,
+            h: 1152,
           },
           {
-            src: '/media/flexible-patterns/filmstrip-4.png',
-            alt: 'document history showing submission, flag, request, and re-submission events',
-            w: 1000,
-            h: 1701,
+            src: '/media/flexible-patterns/cs-3.png',
+            alt: 'applicant credit tab showing a passed credit check, a 728 median score against the property minimum of 660, and key risk factors',
+            w: 1913,
+            h: 1152,
+          },
+          {
+            src: '/media/flexible-patterns/cs-35.png',
+            alt: 'rabies vaccine exception panel for an expired record after eight automatic solicitation attempts, with request, upload, and accept actions',
+            w: 1907,
+            h: 1156,
+          },
+          {
+            src: '/media/flexible-patterns/cs-4.png',
+            alt: 'resident portal animal profile with an edits requested badge and per-field review prompts feeding a submit changes flow',
+            w: 1915,
+            h: 1153,
+          },
+          {
+            src: '/media/flexible-patterns/cs-5.png',
+            alt: 'resident portal home with the application checklist: credit, income, and background checks running in parallel',
+            w: 1912,
+            h: 1150,
           },
         ]}
       />

@@ -19,15 +19,19 @@ export function Fig({ caption, ph, phClass = 'shot', src, alt, natural }) {
   );
 }
 
-export function Band({ label = 'Filmstrip of screens', count = 5, images, breakAfter, layout }) {
-  // mask: every screen sits in its own fixed-height mask (900px) at the
-  // screen's logical width, with a hairline border and the article-component
-  // radius. Taller scrolling screens crop at the mask's bottom edge, keeping
-  // the row uniform.
+export function Band({ label = 'Filmstrip of screens', count = 5, images, breakAfter, layout, frameHeight }) {
+  // mask: every screen sits in its own fixed-height mask at the screen's
+  // logical width, with a hairline border and the article-component radius.
+  // Default height is 560px (portrait phone screens); pass frameHeight to
+  // tune it for other aspects (e.g. wide desktop screens). Taller scrolling
+  // screens crop at the mask's bottom edge, keeping the row uniform.
   if (images && layout === 'mask') {
     return (
       <div className="band" role="group" aria-label={label}>
-        <div className="strip masks">
+        <div
+          className="strip masks"
+          style={frameHeight ? { '--maskh': frameHeight } : undefined}
+        >
           {images.map(({ src, alt, w, h }) => (
             <div className="mask" key={src}>
               <img src={src} alt={alt} width={w} height={h} />
