@@ -688,10 +688,10 @@ main.study h2, main.piece h2 { scroll-margin-top: 96px; }
 }
 .secrail .lbl .n { font: 500 10px var(--mono); letter-spacing: .08em; color: var(--railaccent); }
 .secrail a.cur .lbl { color: var(--title); }
-/* reveal is hover-driven; :has(a:focus-visible) keeps keyboard access
-   without mouse clicks pinning the labels open (clicks focus the link,
-   but never match :focus-visible) */
-.secrail:hover .lbl, .secrail:has(a:focus-visible) .lbl {
+/* one chip at a time: only the hovered dash reveals its label (the tight
+   pitch overlaps chips if all show at once). a:focus-visible keeps keyboard
+   access without mouse clicks pinning a label open. */
+.secrail a:hover .lbl, .secrail a:focus-visible .lbl {
   opacity: 1; pointer-events: auto; transform: translate(0, -50%);
 }
 @media (prefers-reduced-motion: no-preference) {
