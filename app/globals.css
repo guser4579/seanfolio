@@ -648,6 +648,52 @@ main.piece h2::before { color: var(--teal); }
 .piece li { margin-top: 6px; font-size: 16px; line-height: 24px; }
 .piece li::marker { color: var(--muted); }
 
+/* ---------- section rail (desktop minimap, case studies + thought pieces) --
+   One dash per h2, fixed in the left margin. Three states encode progress:
+   upcoming = hairline, passed = dimmed muted, current = longer + accent
+   (blue on studies, teal on pieces, matching the kickers). Hovering or
+   focusing the rail reveals every "01 title" chip at once; click jumps.
+   Rendered by SectionRail.jsx only when a page has 2+ sections. */
+main.study { --railaccent: var(--blue); }
+main.piece { --railaccent: var(--teal); }
+/* anchor jumps must clear the sticky header */
+main.study h2, main.piece h2 { scroll-margin-top: 96px; }
+.secrail {
+  display: none;
+  position: fixed; left: calc(50% - 416px); top: 50%;
+  transform: translateY(-50%); z-index: 40;
+}
+@media (min-width: 1000px) {
+  .secrail { display: flex; flex-direction: column; gap: 8px; }
+}
+.secrail a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 3px 0; text-decoration: none;
+}
+.secrail .dash {
+  flex-shrink: 0; width: 16px; height: 2px; border-radius: 999px;
+  background: var(--line);
+}
+.secrail a.past .dash { background: var(--muted); opacity: .5; }
+.secrail a.cur .dash { width: 24px; background: var(--railaccent); }
+.secrail .lbl {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--paper); border: 1px solid var(--line); border-radius: 8px;
+  padding: 4px 10px; white-space: nowrap;
+  font-size: 13px; line-height: 18px; font-weight: 500; color: var(--muted);
+  box-shadow: 0 8px 24px rgba(16, 17, 18, 0.12);
+  opacity: 0; pointer-events: none; transform: translateX(-4px);
+}
+.secrail .lbl .n { font: 500 10px var(--mono); letter-spacing: .08em; color: var(--railaccent); }
+.secrail a.cur .lbl { color: var(--title); }
+.secrail:hover .lbl, .secrail:focus-within .lbl {
+  opacity: 1; pointer-events: auto; transform: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .secrail .dash { transition: width .15s ease, background-color .15s ease, opacity .15s ease; }
+  .secrail .lbl { transition: opacity .15s ease, transform .15s ease; }
+}
+
 /* ---------- scroll progress pill (case studies + thought pieces) ---------- */
 .scrollpill {
   position: fixed; left: 50%; transform: translateX(-50%);

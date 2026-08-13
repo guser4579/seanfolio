@@ -1,11 +1,13 @@
 import { WORK } from '../lib/data';
 import { MetaRow, HeroFoot } from './Hero';
+import SectionRail from './SectionRail';
 
 export default function StudyHero({ slug }) {
   const item = WORK.find((w) => w.slug === slug);
   if (!item) return null;
   return (
     <div className="article-hero">
+      <SectionRail />
       <h1>{item.title}</h1>
       <MetaRow
         className="hero-primary"

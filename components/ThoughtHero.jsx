@@ -1,6 +1,7 @@
 import { THOUGHTS } from '../lib/data';
 import { thoughtDate } from '../lib/github';
 import { HeroFoot, SourceRow } from './Hero';
+import SectionRail from './SectionRail';
 
 // Thought pieces carry their own lede (page-specific prose), so it is passed
 // in; everything else comes from THOUGHTS by slug so the hero, homepage, and
@@ -13,6 +14,7 @@ export default async function ThoughtHero({ slug, lede }) {
   const date = await thoughtDate(item);
   return (
     <div className="article-hero">
+      <SectionRail />
       <h1>{item.title}</h1>
       {lede ? <p className="lede">{lede}</p> : null}
       <p className="hero-meta hero-byline">
