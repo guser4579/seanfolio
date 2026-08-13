@@ -126,12 +126,6 @@ export default async function Page({ searchParams }) {
         The goal became building an analysis layer on top of the information
         organization and transmission layer we had already established.
       </p>
-      <Fig
-        src="/media/flexible-patterns/exception-banners.png"
-        alt="a property manager reviewing an application with in-line banners flagging items that require review"
-        caption="expandable in-line exception banners"
-      />
-
       <Band
         label="The screening flow, from the property's queue to the resident's fix"
         layout="mask"
