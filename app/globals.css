@@ -392,6 +392,26 @@ main.piece h2::before { color: var(--teal); }
 }
 .strip.masks .mask img { height: 100%; width: auto; display: block; }
 
+/* ---------- textbook line figures (how-i-work) ---------- */
+/* end-of-section figures: mono "fig. 0N" tag keyed to the section kicker,
+   muted 1.5px strokes, one blue accent per figure. All colors are theme
+   tokens so the drawings adapt to light/dark like the hairlines. */
+.diafig { margin: 28px 0 0; }
+.diafig .tag {
+  font: 500 11px/16px var(--mono); letter-spacing: .1em;
+  color: var(--muted); margin-bottom: 8px;
+}
+.diafig svg { display: block; width: 100%; height: auto; }
+.diafig .ln { stroke: var(--muted); stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.diafig .ln-b { stroke: var(--blue); stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.diafig .dash { stroke-dasharray: 4 5; }
+.diafig .chipnode { stroke: var(--muted); stroke-width: 1.5; fill: var(--paper); }
+.diafig .fill-m { fill: var(--muted); stroke: none; }
+.diafig .lbl   { font: 500 11px var(--mono); letter-spacing: .06em; fill: var(--body); }
+.diafig .lbl-m { font: 500 11px var(--mono); letter-spacing: .06em; fill: var(--muted); }
+.diafig .lbl-b { font: 500 11px var(--mono); letter-spacing: .06em; fill: var(--blue); }
+.diafig .lbl-s { font: 500 9px var(--mono); letter-spacing: .08em; fill: var(--muted); }
+
 /* ---------- inline skill-file chips (how-i-work) ---------- */
 .skillchip-wrap { position: relative; display: inline-block; vertical-align: baseline; }
 .skillchip {

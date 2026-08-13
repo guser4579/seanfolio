@@ -3,6 +3,14 @@ import { join } from 'node:path';
 import StudyHero from '../../components/StudyHero';
 import SkillChip from '../../components/SkillChip';
 import ScrollProgress from '../../components/ScrollProgress';
+import {
+  FigStartingPoint,
+  FigInheritedUsers,
+  FigWarrants,
+  FigOneSystem,
+  FigSkillFiles,
+  FigAiCore,
+} from '../../components/FoxenFigures';
 
 export const metadata = {
   title: 'How I run design at Foxen',
@@ -42,6 +50,7 @@ export default function Page() {
         infrastructure, systems, and processes that would make consistent,
         thoughtful, and scalable experiences inevitable as Foxen grew.
       </p>
+      <FigStartingPoint />
 
       <h2>Users are inherited, not acquired</h2>
       <p>
@@ -81,6 +90,7 @@ export default function Page() {
         already know.
       </p>
       <p>Being generic and familiar here are virtues.</p>
+      <FigInheritedUsers />
 
       <h2>What warrants design</h2>
       <p>
@@ -106,6 +116,7 @@ export default function Page() {
         Most simply, a design is successful if it minimizes support calls and
         maximizes a user's ability to self serve.
       </p>
+      <FigWarrants />
 
       <h2>One design system for all platforms</h2>
       <p>
@@ -120,6 +131,7 @@ export default function Page() {
         components without relearning a visual language or re-deriving what
         drove pattern decisions in the first place.
       </p>
+      <FigOneSystem />
 
       <h2>Skill files</h2>
       <p>
@@ -204,6 +216,7 @@ export default function Page() {
         problem is actually understood. From there it is rough mocks, quick
         stakeholder feedback, final polish in Figma, and then engineering.
       </p>
+      <FigSkillFiles />
 
       <h2>What AI does here, and what it does not</h2>
       <p>
@@ -227,6 +240,7 @@ export default function Page() {
         (again, for the time being) that conversational understanding that
         makes steering a ship possible.
       </p>
+      <FigAiCore />
 
       <h2>Appendix: The stack</h2>
       <ul>
