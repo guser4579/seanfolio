@@ -1,8 +1,9 @@
 import { EMAIL, LINKEDIN_URL, RESUME_URL, X_URL } from '../lib/data';
-import { getLastPush, agoLabel } from '../lib/github';
+import { getLastPush, getRepoVersion, agoLabel } from '../lib/github';
 
 export default async function Footer() {
-  const ago = agoLabel(await getLastPush());
+  const [pushIso, version] = await Promise.all([getLastPush(), getRepoVersion()]);
+  const ago = agoLabel(pushIso);
   return (
     <footer className="site-foot">
       <div className="foot-inner">
@@ -10,12 +11,19 @@ export default async function Footer() {
           <span className="pulse" aria-hidden="true" />
           active{ago ? ` • ${ago}` : ''}
         </span>
-        <nav className="links" aria-label="Contact">
-          <a href={`mailto:${EMAIL}`}>email</a>
-          <a href={LINKEDIN_URL}>linkedin</a>
-          <a href={X_URL}>x</a>
-          <a href={RESUME_URL}>resume</a>
-        </nav>
+        <span className="foot-right">
+          <nav className="links" aria-label="Contact">
+            <a href={`mailto:${EMAIL}`}>email</a>
+            <a href={LINKEDIN_URL}>linkedin</a>
+            <a href={X_URL}>x</a>
+            <a href={RESUME_URL}>resume</a>
+          </nav>
+          {version ? (
+            <span className="ver" aria-label={`site version ${version}`}>
+              v{version}
+            </span>
+          ) : null}
+        </span>
       </div>
     </footer>
   );

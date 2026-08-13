@@ -22,6 +22,14 @@ const skillLines = (file) =>
     .trimEnd()
     .split('\n').length;
 
+// the appendix aggregate counts itself from the same files
+const SKILL_FILES = [
+  'ux-principles.md',
+  'ui-reference.md',
+  'design-self-review.md',
+  'design-discovery.md',
+];
+
 export default function Page() {
   return (
     <main id="main" className="study">
@@ -256,7 +264,12 @@ export default function Page() {
         <li>
           <span className="toolname">Claude</span> - runs the department's
           skill files: UX_Principles_Skill, UI_Skill, Design_Review_Skill, and
-          Design_Discovery_Skill.
+          Design_Discovery_Skill.{' '}
+          <span className="filestat">
+            {SKILL_FILES.length} files ·{' '}
+            {SKILL_FILES.reduce((sum, f) => sum + skillLines(f), 0).toLocaleString('en-US')}{' '}
+            lines
+          </span>
         </li>
         <li>
           <span className="toolname">Mobbin &amp; Refero</span> - pattern

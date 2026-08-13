@@ -14,7 +14,7 @@ const BACK_ROUTES = ['/design-at-foxen', '/flexible-patterns', '/claims', '/coi'
 // to; otherwise the back link falls through to a plain navigation home.
 let inAppNavs = 0;
 
-export default function Header() {
+export default function Header({ resumeUpdated }) {
   const pathname = usePathname() || '/';
   const router = useRouter();
   const isBack = BACK_ROUTES.some((p) =>
@@ -264,7 +264,12 @@ export default function Header() {
                 </a>
               </div>
               <div className="row">
-                <span className="label">Resume</span>
+                <span className="label">
+                  Resume
+                  {resumeUpdated ? (
+                    <span className="sub">updated {resumeUpdated}</span>
+                  ) : null}
+                </span>
                 <a className="value link" href={RESUME_URL}>
                   Download
                 </a>

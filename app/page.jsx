@@ -2,6 +2,7 @@ import Link from 'next/link';
 import CodePulse from '../components/CodePulse';
 import InfoChip from '../components/InfoChip';
 import { WORK, THOUGHTS, JOBS } from '../lib/data';
+import { thoughtDate } from '../lib/github';
 
 const FOXEN_ABOUT =
   'Foxen is a proptech company that builds software and ' +
@@ -13,7 +14,10 @@ const FOXEN_ABOUT =
   'companies and real estate owners while also building resident-facing ' +
   'experiences used by their tenants.';
 
-export default function Home() {
+export default async function Home() {
+  const thoughtDates = Object.fromEntries(
+    await Promise.all(THOUGHTS.map(async (t) => [t.slug, await thoughtDate(t)]))
+  );
   return (
     <main id="main" className="col">
       <section className="sect">
@@ -95,7 +99,7 @@ export default function Home() {
                   ) : null}
                   <span>{t.topic}</span>
                   <span aria-hidden="true">•</span>
-                  <span>{t.date}</span>
+                  <span>{thoughtDates[t.slug]}</span>
                 </p>
               </Link>
             </li>

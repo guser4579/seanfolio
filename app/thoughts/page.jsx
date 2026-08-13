@@ -1,9 +1,13 @@
 import Link from 'next/link';
 import { THOUGHTS } from '../../lib/data';
+import { thoughtDate } from '../../lib/github';
 
 export const metadata = { title: 'thoughts' };
 
-export default function Thoughts() {
+export default async function Thoughts() {
+  const thoughtDates = Object.fromEntries(
+    await Promise.all(THOUGHTS.map(async (t) => [t.slug, await thoughtDate(t)]))
+  );
   return (
     <main id="main" className="col">
       <section className="sect" aria-labelledby="thoughts-h">
@@ -19,7 +23,7 @@ export default function Thoughts() {
                 <p className="g-meta">
                   <span>{t.topic}</span>
                   <span aria-hidden="true">•</span>
-                  <span>{t.date}</span>
+                  <span>{thoughtDates[t.slug]}</span>
                 </p>
               </Link>
             </li>

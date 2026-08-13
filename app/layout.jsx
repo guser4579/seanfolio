@@ -1,6 +1,7 @@
 import './globals.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { getFileUpdatedLabel } from '../lib/github';
 
 export const metadata = {
   metadataBase: new URL('https://www.seanforquer.com'),
@@ -12,7 +13,9 @@ export const metadata = {
     'Sean Forquer is a product designer. He runs design at Foxen as a department of one.',
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  // git-derived resume freshness, shown in the contact modal's Resume row
+  const resumeUpdated = await getFileUpdatedLabel('public/SeanForquer_Resume.pdf');
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
@@ -25,7 +28,7 @@ export default function RootLayout({ children }) {
         <a className="skip" href="#main">
           Skip to content
         </a>
-        <Header />
+        <Header resumeUpdated={resumeUpdated} />
         {children}
         <Footer />
       </body>
