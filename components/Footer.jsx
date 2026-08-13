@@ -1,12 +1,14 @@
 import { EMAIL, LINKEDIN_URL, RESUME_URL, X_URL } from '../lib/data';
+import { getLastPush, agoLabel } from '../lib/github';
 
-export default function Footer() {
+export default async function Footer() {
+  const ago = agoLabel(await getLastPush());
   return (
     <footer className="site-foot">
       <div className="foot-inner">
         <span className="status">
           <span className="pulse" aria-hidden="true" />
-          active
+          active{ago ? ` • ${ago}` : ''}
         </span>
         <nav className="links" aria-label="Contact">
           <a href={`mailto:${EMAIL}`}>email</a>

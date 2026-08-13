@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import CodePulse from '../components/CodePulse';
 import InfoChip from '../components/InfoChip';
 import { WORK, THOUGHTS, JOBS } from '../lib/data';
 
@@ -16,6 +17,7 @@ export default function Home() {
   return (
     <main id="main" className="col">
       <section className="sect">
+        <CodePulse />
         <div className="card">
           <h1 className="head">
             <span className="accent red" aria-hidden="true" />
