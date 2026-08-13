@@ -356,11 +356,6 @@ main.piece h2::before { color: var(--teal); }
 .study li { margin-top: 6px; font-size: 16px; line-height: 24px; }
 .study li::marker { color: var(--muted); }
 .study .toolname { font-weight: 600; color: var(--title); }
-/* self-counting aggregate for the skill-file appendix line */
-.study .filestat {
-  font: 500 12px var(--mono); color: var(--muted);
-  letter-spacing: .04em; white-space: nowrap;
-}
 .formula { font-style: italic; color: var(--muted); }
 
 /* seamless full-bleed strips: no tint behind the framed screens, so every
@@ -811,15 +806,19 @@ button.value.plain {
 footer.site-foot { border-top: 1px solid var(--line); }
 .foot-inner {
   padding: 14px 16px; /* full-width: 16px gutters at every screen size */
-  display: flex; justify-content: space-between; align-items: baseline;
+  display: flex; justify-content: space-between; align-items: center;
   flex-wrap: wrap; gap: 8px 24px; font-size: 14px;
 }
 .foot-inner .links { display: flex; gap: 18px; }
-.foot-right { display: flex; align-items: baseline; gap: 18px; }
-/* the site's own commit count, git-derived - hidden on mobile for room */
-.ver { font: 500 12px/20px var(--mono); color: var(--muted); letter-spacing: .04em; }
+.foot-right { display: flex; align-items: center; gap: 12px; }
+/* the site's own commit count, git-derived. Dimmer than the links so
+   clickable and non-clickable read as different things. Hidden on mobile. */
+.ver, .vsep {
+  font: 500 12px/20px var(--mono); letter-spacing: .04em;
+  color: color-mix(in srgb, var(--muted) 55%, var(--paper));
+}
 @media (max-width: 639px) {
-  .ver { display: none; }
+  .ver, .vsep { display: none; }
 }
 .foot-inner a { color: var(--muted); text-decoration: none; }
 .foot-inner a:hover { color: var(--title); }

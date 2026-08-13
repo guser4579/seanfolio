@@ -19,9 +19,14 @@ export default async function Footer() {
             <a href={RESUME_URL}>resume</a>
           </nav>
           {version ? (
-            <span className="ver" aria-label={`site version ${version}`}>
-              v{version}
-            </span>
+            <>
+              <span className="vsep" aria-hidden="true">
+                •
+              </span>
+              <span className="ver" aria-label={`site version ${version}`}>
+                v{version}
+              </span>
+            </>
           ) : null}
         </span>
       </div>
