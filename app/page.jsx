@@ -113,9 +113,18 @@ export default function Home() {
         <ul className="list">
           {JOBS.map((j) => (
             <li className="job" key={j.co}>
-              <span className="t">{j.co}</span>
-              <span className="role">, {j.role}</span>
-              <p className="meta">{j.meta}</p>
+              <span className="joblogo" aria-hidden="true">
+                {j.logo ? (
+                  <img src={j.logo} alt="" width="240" height="240" />
+                ) : (
+                  <span className="mark">{j.co[0]}</span>
+                )}
+              </span>
+              <div className="jobtx">
+                <span className="t">{j.co}</span>
+                <span className="role">, {j.role}</span>
+                <p className="meta">{j.meta}</p>
+              </div>
             </li>
           ))}
         </ul>

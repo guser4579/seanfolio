@@ -225,10 +225,22 @@ li.feat .bar {
 }
 li.feat .rec { color: var(--teal); font-weight: 500; }
 
-li.job { padding: 12px 0 14px; }
+li.job { padding: 12px 0 14px; display: flex; align-items: center; gap: 14px; }
 .job .t { font-weight: 700; color: var(--title); }
 .job .role { color: var(--body); font-weight: 400; }
 .job .meta { color: var(--muted); margin: 2px 0 0; }
+/* company mark: avatar-style square, white in both themes (brand marks are
+   drawn for white), hairline frame. Companies without a supplied logo get a
+   mono lettermark in the same frame so the rows read as one system. */
+.joblogo {
+  flex-shrink: 0; width: 20px; height: 20px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: #FFFFFF; border: 1px solid var(--line); border-radius: 6px;
+  overflow: hidden;
+}
+.joblogo img { width: 100%; height: 100%; display: block; }
+.joblogo .mark { font: 500 10px var(--mono); color: #6A6E7B; }
+.jobtx { min-width: 0; }
 
 /* ---------- case study ---------- */
 .study h1 { font-size: 22px; line-height: 30px; font-weight: 600; color: var(--title); margin: 0 0 4px; }
