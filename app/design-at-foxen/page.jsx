@@ -25,7 +25,7 @@ export default function Page() {
         no designers, contractors, or existing infra of any kind - fwiw, this
         is often a better starting point than the adoption of poor choices
         previously made, so I mention this more as a point of observation than
-        complaint. The process's immaturity is represented well by marketing's
+        complaint. The process's immaturity was represented well by marketing's
         production of interface assets and the one front-end dev who assembled
         them with little in the way of the necessary formalities you'd expect
         to find at contemporary technology companies. It would likely, then,
