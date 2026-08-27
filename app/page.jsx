@@ -29,7 +29,7 @@ export default async function Home() {
           </h1>
           <p>
             I am currently head of product design at the compliance tech
-            company called{' '}
+            company{' '}
             <InfoChip
               label="Foxen"
               text={FOXEN_ABOUT}
