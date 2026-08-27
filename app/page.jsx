@@ -28,7 +28,7 @@ export default async function Home() {
             hi, i'm sean
           </h1>
           <p>
-            I am currently head of product design at a compliance tech
+            I am currently head of product design at the compliance tech
             company called{' '}
             <InfoChip
               label="Foxen"
