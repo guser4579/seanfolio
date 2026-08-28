@@ -3,6 +3,8 @@ import CodePulse from '../components/CodePulse';
 import InfoChip from '../components/InfoChip';
 import { WORK, THOUGHTS, JOBS } from '../lib/data';
 import { thoughtDate } from '../lib/github';
+import { gateOpen } from '../lib/gate';
+import Redacted from '../components/Redacted';
 
 const FOXEN_ABOUT =
   'Foxen is a proptech company that builds software and ' +
@@ -15,6 +17,8 @@ const FOXEN_ABOUT =
   'experiences used by their tenants.';
 
 export default async function Home() {
+  // locked visitors see dollar outcomes redacted in the work list
+  const unlocked = await gateOpen();
   const thoughtDates = Object.fromEntries(
     await Promise.all(THOUGHTS.map(async (t) => [t.slug, await thoughtDate(t)]))
   );
@@ -71,7 +75,16 @@ export default async function Home() {
               <Link className="item" href={`/${w.slug}`}>
                 <span className="t">{w.title}</span>
                 <p className="blurb">{w.blurb}</p>
-                <p className="meta">{w.meta}</p>
+                <p className="meta">
+                  {!unlocked && w.outcome ? (
+                    <>
+                      <Redacted text={w.outcome} />
+                      {w.meta.slice(w.outcome.length)}
+                    </>
+                  ) : (
+                    w.meta
+                  )}
+                </p>
               </Link>
             </li>
           ))}

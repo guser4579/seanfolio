@@ -213,6 +213,16 @@ a.item:hover .t { text-decoration: underline; text-underline-offset: 3px; }
 .item .blurb { margin: 3px 0 0; color: var(--body); }
 .item .meta { margin: 4px 0 0; color: var(--muted); }
 
+/* redacted money (locked work list): the $ and the descriptive words stay,
+   the digits become a fixed-width dashed blank - dashed means withheld, the
+   same sense the study figures give it. Constant width: never leaks magnitude. */
+.redact { display: inline-flex; align-items: center; gap: 3px; }
+.redact .bar {
+  display: inline-block; width: 30px; height: 11px;
+  border: 1px dashed var(--muted); border-radius: 3px;
+  opacity: .55; position: relative; top: 1px;
+}
+
 .g-meta {
   display: flex; align-items: center; flex-wrap: wrap; gap: 0 6px;
   color: var(--muted); margin: 4px 0 0;

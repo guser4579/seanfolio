@@ -1,38 +1,27 @@
-import Gate from '../../components/Gate';
-import { gateOpen } from '../../lib/gate';
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
 import StudyHero from '../../components/StudyHero';
-import SkillChip from '../../components/SkillChip';
-import ScrollProgress from '../../components/ScrollProgress';
-import {
-  FigStartingPoint,
-  FigInheritedUsers,
-  FigWarrants,
-  FigOneSystem,
-  FigSkillFiles,
-  FigAiCore,
-} from '../../components/FoxenFigures';
+import SkillFile from '../../components/SkillFile';
 
 export const metadata = {
   title: 'How I run design at Foxen',
-  robots: { index: false },
 };
 
-// line counts for the chip labels, read from the real files at build time
-const skillLines = (file) =>
-  readFileSync(join(process.cwd(), 'public', 'skills', file), 'utf8')
-    .trimEnd()
-    .split('\n').length;
-
-export default async function Page({ searchParams }) {
-  const open = await gateOpen();
-  const sp = await searchParams;
-  if (!open) return <Gate returnTo="/design-at-foxen" error={sp?.gate_error} />;
-
+export default function Page() {
   return (
     <main id="main" className="study">
       <StudyHero slug="design-at-foxen" />
+
+      <h2>Intro</h2>
+      <p>
+        March 2024 was a seminal moment in time for Foxen, as the design
+        headcount rose from 0 to 1; an increase of, depending on how you
+        count, either 100% or everything. Two years later, that same headcount
+        supports four teams as well as design as an independent strategic
+        function - resident experience, property manager experience, Foxen
+        associate experience, and an innovation team where new products are
+        conceived. As Foxen has grown, the demand from design has increased
+        considerably. When resourcing does not grow commensurate to demand,
+        capacity must be creatively contrived.
+      </p>
 
       <h2>The starting point</h2>
       <p>
@@ -40,7 +29,7 @@ export default async function Page({ searchParams }) {
         no designers, contractors, or existing infra of any kind - fwiw, this
         is often a better starting point than the adoption of poor choices
         previously made, so I mention this more as a point of observation than
-        complaint. The process's immaturity was represented well by marketing's
+        complaint. The process's immaturity is represented well by marketing's
         production of interface assets and the one front-end dev who assembled
         them with little in the way of the necessary formalities you'd expect
         to find at contemporary technology companies. It would likely, then,
@@ -57,7 +46,6 @@ export default async function Page({ searchParams }) {
         infrastructure, systems, and processes that would make consistent,
         thoughtful, and scalable experiences inevitable as Foxen grew.
       </p>
-      <FigStartingPoint />
 
       <h2>Users are inherited, not acquired</h2>
       <p>
@@ -97,7 +85,6 @@ export default async function Page({ searchParams }) {
         already know.
       </p>
       <p>Being generic and familiar here are virtues.</p>
-      <FigInheritedUsers />
 
       <h2>What warrants design</h2>
       <p>
@@ -123,7 +110,6 @@ export default async function Page({ searchParams }) {
         Most simply, a design is successful if it minimizes support calls and
         maximizes a user's ability to self serve.
       </p>
-      <FigWarrants />
 
       <h2>One design system for all platforms</h2>
       <p>
@@ -138,7 +124,6 @@ export default async function Page({ searchParams }) {
         components without relearning a visual language or re-deriving what
         drove pattern decisions in the first place.
       </p>
-      <FigOneSystem />
 
       <h2>Skill files</h2>
       <p>
@@ -158,43 +143,32 @@ export default async function Page({ searchParams }) {
       </p>
       <ol>
         <li>
-          A{' '}
-          <SkillChip
-            name="UX_Principles_Skill"
-            file="ux-principles.md"
-            lines={skillLines('ux-principles.md')}
-          />{' '}
-          encodes why our decisions are what they are, so that an engineer's
-          Claude instance interprets intent with a higher degree of accuracy
-          instead of guessing at it.
+          A UX_Principles_Skill encodes why our decisions are what they are,
+          so that an engineer's Claude instance interprets intent with a
+          higher degree of accuracy instead of guessing at it.
         </li>
         <li>
-          A{' '}
-          <SkillChip
-            name="UI_Skill"
-            file="ui-reference.md"
-            lines={skillLines('ui-reference.md')}
-          />{' '}
-          acts as a pseudo component library, with tokens loaded in and rules
-          made explicit. This serves as the boundary a coding agent operates
-          within, and as the source of truth when the component library
-          drifts.
+          A UI_Skill acts as a pseudo component library, with tokens loaded in
+          and rules made explicit. This serves as the boundary a coding agent
+          operates within, and as the source of truth when the component
+          library drifts.
         </li>
         <li>
-          A{' '}
-          <SkillChip
-            name="Design_Review_Skill"
-            file="design-self-review.md"
-            lines={skillLines('design-self-review.md')}
-          />{' '}
-          that is required to pass as part of an engineer's ticket's
-          acceptance criteria for all front end work. This file checks an
-          engineer's build against hard coded rules, identifies the gaps, and
-          prompts the same agent to actually implement the fix before it ever
-          reaches me. I built this one after noticing I was making the same
-          review comments over and over to different engineers.
+          A Design_Review_Skill that is required to pass as part of an
+          engineer's ticket's acceptance criteria for all front end work. This
+          file checks an engineer's build against hard coded rules, identifies
+          the gaps, and prompts the same agent to actually implement the fix
+          before it ever reaches me. I built this one after noticing I was
+          making the same review comments over and over to different
+          engineers.
         </li>
       </ol>
+
+      <div className="skillfiles" role="group" aria-label="Genericized skill files">
+        <SkillFile name="UX_Principles_Skill" file="ux-principles.md" />
+        <SkillFile name="UI_Skill" file="ui-reference.md" />
+        <SkillFile name="Design_Review_Skill" file="design-self-review.md" />
+      </div>
 
       <p>
         The results have been significant. Getting a design's implementation
@@ -206,13 +180,7 @@ export default async function Page({ searchParams }) {
       </p>
       <p>
         My own work, before a design has ever been created, runs through a
-        fourth{' '}
-        <SkillChip
-          name="Design_Discovery_Skill"
-          file="design-discovery.md"
-          lines={skillLines('design-discovery.md')}
-        />
-        . Because I look at design as the
+        fourth Design_Discovery_Skill. Because I look at design as the
         understanding of a problem and its context expressed through an
         interface, a design's goodness is simply a function of the extent to
         which the problem was understood. The design discovery skill is an
@@ -223,7 +191,10 @@ export default async function Page({ searchParams }) {
         problem is actually understood. From there it is rough mocks, quick
         stakeholder feedback, final polish in Figma, and then engineering.
       </p>
-      <FigSkillFiles />
+
+      <div className="skillfiles" role="group" aria-label="Design discovery skill file">
+        <SkillFile name="Design_Discovery_Skill" file="design-discovery.md" />
+      </div>
 
       <h2>What AI does here, and what it does not</h2>
       <p>
@@ -247,7 +218,6 @@ export default async function Page({ searchParams }) {
         (again, for the time being) that conversational understanding that
         makes steering a ship possible.
       </p>
-      <FigAiCore />
 
       <h2>Appendix: The stack</h2>
       <ul>
@@ -280,8 +250,6 @@ export default async function Page({ searchParams }) {
           surfaces frustrated user sessions and optimization targets.
         </li>
       </ul>
-
-      <ScrollProgress />
     </main>
   );
 }

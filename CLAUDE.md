@@ -13,8 +13,9 @@ no staging branch; verify with npm run build locally before pushing.
 - app/<slug>/page.jsx - one route per case study / thought piece. Case studies
   use className "study", StudyHero, and ScrollProgress. Foxen case studies also
   render StudyCrossLink (points at /design-at-foxen). movemoney does not.
-- Gated studies (flexible-patterns, claims, coi) sit behind Gate, driven by the
-  CASE_STUDY_PASSWORD env var. design-at-foxen and movemoney are public.
+- Gated studies (design-at-foxen, flexible-patterns, claims, coi) sit behind
+  Gate, driven by the CASE_STUDY_PASSWORD env var. movemoney is public. The
+  homepage work list redacts dollar outcomes for locked visitors (Redacted.jsx).
 - components/Header.jsx: BACK_ROUTES lists every route that shows the "back"
   breadcrumb instead of the primary nav. New case studies must be added there.
 - Skill files live in public/skills/*.md and render as inline SkillChip
