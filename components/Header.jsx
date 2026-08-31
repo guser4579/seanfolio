@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { EMAIL, LINKEDIN_URL, RESUME_URL } from '../lib/data';
+import { EMAIL, LINKEDIN_URL, RESUME_URL, SHOW_RESUME } from '../lib/data';
 
 const BACK_ROUTES = ['/design-at-foxen', '/flexible-patterns', '/claims', '/coi', '/movemoney', '/thoughts/'];
 
@@ -263,17 +263,19 @@ export default function Header({ resumeUpdated }) {
                   Visit
                 </a>
               </div>
-              <div className="row">
-                <span className="label">
-                  Resume
-                  {resumeUpdated ? (
-                    <span className="sub">updated {resumeUpdated}</span>
-                  ) : null}
-                </span>
-                <a className="value link" href={RESUME_URL}>
-                  Download
-                </a>
-              </div>
+              {SHOW_RESUME ? (
+                <div className="row">
+                  <span className="label">
+                    Resume
+                    {resumeUpdated ? (
+                      <span className="sub">updated {resumeUpdated}</span>
+                    ) : null}
+                  </span>
+                  <a className="value link" href={RESUME_URL}>
+                    Download
+                  </a>
+                </div>
+              ) : null}
               </div>
             </div>
           </div>

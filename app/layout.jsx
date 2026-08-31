@@ -2,6 +2,7 @@ import './globals.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { getFileUpdatedLabel } from '../lib/github';
+import { SHOW_RESUME } from '../lib/data';
 
 export const metadata = {
   metadataBase: new URL('https://www.seanforquer.com'),
@@ -15,7 +16,9 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   // git-derived resume freshness, shown in the contact modal's Resume row
-  const resumeUpdated = await getFileUpdatedLabel('public/SeanForquer_Resume.pdf');
+  const resumeUpdated = SHOW_RESUME
+    ? await getFileUpdatedLabel('public/SeanForquer_Resume.pdf')
+    : null;
   return (
     <html lang="en" suppressHydrationWarning>
       <body>

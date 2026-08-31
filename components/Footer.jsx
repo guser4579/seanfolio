@@ -1,4 +1,4 @@
-import { EMAIL, LINKEDIN_URL, RESUME_URL, X_URL } from '../lib/data';
+import { EMAIL, LINKEDIN_URL, RESUME_URL, SHOW_RESUME, X_URL } from '../lib/data';
 import { getLastPush, getRepoVersion, agoLabel } from '../lib/github';
 
 export default async function Footer() {
@@ -16,7 +16,7 @@ export default async function Footer() {
             <a href={`mailto:${EMAIL}`}>email</a>
             <a href={LINKEDIN_URL}>linkedin</a>
             <a href={X_URL}>x</a>
-            <a href={RESUME_URL}>resume</a>
+            {SHOW_RESUME ? <a href={RESUME_URL}>resume</a> : null}
           </nav>
           {version ? (
             <>
