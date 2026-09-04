@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import StudyHero from '../../components/StudyHero';
 import SkillChip from '../../components/SkillChip';
+import { Band } from '../../components/Study';
 import ScrollProgress from '../../components/ScrollProgress';
 import {
   FigStartingPoint,
@@ -139,6 +140,57 @@ export default async function Page({ searchParams }) {
         drove pattern decisions in the first place.
       </p>
       <FigOneSystem />
+      <Band
+        label="Foxen design system component gallery"
+        layout="mask"
+        frameHeight="clamp(240px, 60vw, 400px)"
+        images={[
+          {
+            src: '/media/design-system/ds1.png',
+            w: 2000,
+            h: 1056,
+            alt: 'gallery introduction stating the canonical rule: no MudBlazor component outside Foxen.Design, enforced by a grep',
+          },
+          {
+            src: '/media/design-system/ds2.png',
+            w: 2000,
+            h: 1056,
+            alt: 'text field documentation with spacing rules, a static-label rule, and live previews of its states',
+          },
+          {
+            src: '/media/design-system/ds3.png',
+            w: 2000,
+            h: 1056,
+            alt: 'file upload documentation showing plain and dashed add-file variants with the size limit stated up front',
+          },
+          {
+            src: '/media/design-system/ds4.png',
+            w: 2000,
+            h: 1056,
+            alt: 'dialog documentation with a live dialog open: title, one line of context, three options, confirm and cancel',
+          },
+          {
+            src: '/media/design-system/ds5.png',
+            w: 2000,
+            h: 1056,
+            alt: 'banner documentation showing info, success, warning, and error states, plus a banner with an inline action',
+          },
+          {
+            src: '/media/design-system/ds6.png',
+            w: 2000,
+            h: 1056,
+            alt: 'validation summary code tab showing the Blazor markup engineers copy, including server-error handling',
+          },
+          {
+            video: true,
+            src: '/media/design-system/ds-gallery.mp4',
+            poster: '/media/design-system/ds-gallery-poster.jpg',
+            w: 1120,
+            h: 596,
+            alt: 'screen recording browsing the component gallery',
+          },
+        ]}
+      />
 
       <h2>Skill files</h2>
       <p>
@@ -195,6 +247,15 @@ export default async function Page({ searchParams }) {
           review comments over and over to different engineers.
         </li>
       </ol>
+
+      <p>
+        The three ship together as a plugin installed alongside each
+        engineer's Claude instance. The same files serve two audiences at
+        once - a human dev reads them as the department's documentation, and
+        an agent loads them as its operating instructions - and it is that
+        packaging that makes agentic development against the design system
+        possible without me in the loop.
+      </p>
 
       <p>
         The results have been significant. Getting a design's implementation
@@ -263,7 +324,7 @@ export default async function Page({ searchParams }) {
         <li>
           <span className="toolname">Claude</span> - runs the department's
           skill files: UX_Principles_Skill, UI_Skill, Design_Review_Skill, and
-          Design_Discovery_Skill.
+          Design_Discovery_Skill, distributed to engineering as a plugin.
         </li>
         <li>
           <span className="toolname">Mobbin &amp; Refero</span> - pattern

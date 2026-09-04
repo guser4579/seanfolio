@@ -435,7 +435,8 @@ main.piece h2::before { color: var(--teal); }
   flex: 0 0 auto; height: var(--maskh, 560px); overflow: hidden;
   background: var(--paper); border: 1px solid var(--line); border-radius: 12px;
 }
-.strip.masks .mask img { height: 100%; width: auto; display: block; }
+.strip.masks .mask img,
+.strip.masks .mask video { height: 100%; width: auto; display: block; }
 
 /* ---------- textbook line figures (how-i-work) ---------- */
 /* end-of-section figures: mono "fig. 0N" tag keyed to the section kicker,

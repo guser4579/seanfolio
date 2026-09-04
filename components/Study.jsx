@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import MaskVideo from './MaskVideo';
 
 export function Thesis({ children }) {
   return <blockquote className="thesis">{children}</blockquote>;
@@ -32,9 +33,13 @@ export function Band({ label = 'Filmstrip of screens', count = 5, images, breakA
           className="strip masks"
           style={frameHeight ? { '--maskh': frameHeight } : undefined}
         >
-          {images.map(({ src, alt, w, h }) => (
+          {images.map(({ src, alt, w, h, video, poster }) => (
             <div className="mask" key={src}>
-              <img src={src} alt={alt} width={w} height={h} />
+              {video ? (
+                <MaskVideo src={src} poster={poster} w={w} h={h} label={alt} />
+              ) : (
+                <img src={src} alt={alt} width={w} height={h} />
+              )}
             </div>
           ))}
         </div>
