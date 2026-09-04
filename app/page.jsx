@@ -71,11 +71,18 @@ export default async function Home() {
         </h2>
         <ul className="list">
           {WORK.map((w) => (
-            <li key={w.slug}>
+            <li key={w.slug} className={w.featured ? 'feat feat-work' : undefined}>
               <Link className="item" href={`/${w.slug}`}>
+                {w.featured ? <span className="bar" aria-hidden="true" /> : null}
                 <span className="t">{w.title}</span>
                 <p className="blurb">{w.blurb}</p>
                 <p className="meta">
+                  {w.featured ? (
+                    <>
+                      <span className="rec">{w.featured}</span>
+                      {' • '}
+                    </>
+                  ) : null}
                   {!unlocked && w.outcome ? (
                     <>
                       <Redacted text={w.outcome} />

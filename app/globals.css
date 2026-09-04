@@ -234,6 +234,11 @@ li.feat .bar {
   border-radius: 999px; background: var(--teal);
 }
 li.feat .rec { color: var(--teal); font-weight: 500; }
+/* the work list wears its own section accent: blue bar + blue label. The
+   thoughts featured row keeps teal - each section marks its favorite in its
+   own color. */
+li.feat.feat-work .bar { background: var(--blue); }
+li.feat.feat-work .rec { color: var(--blue); }
 
 li.job { padding: 12px 0 14px; display: flex; align-items: center; gap: 14px; }
 .job .t { font-weight: 700; color: var(--title); }
@@ -251,6 +256,16 @@ li.job { padding: 12px 0 14px; display: flex; align-items: center; gap: 14px; }
 .joblogo img { width: 100%; height: 100%; display: block; }
 .joblogo .mark { font: 500 11px var(--mono); color: #6A6E7B; }
 .jobtx { min-width: 0; }
+
+/* ---------- keblob field (/kebab) ----------
+   kebab's welcome-screen lava-lamp background, ported. A WebGL shader (in
+   KeblobBackground.jsx) evaluates the metaball field per pixel at native
+   resolution - no browser blur involved, so the silhouette stays smooth
+   and cut-paper sharp. Fixed behind the article: .keb lifts the prose
+   above it. */
+.keblob { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
+.keblob canvas { display: block; width: 100%; height: 100%; }
+main.keb { position: relative; z-index: 1; }
 
 /* ---------- case study ---------- */
 .study h1 { font-size: 22px; line-height: 30px; font-weight: 600; color: var(--title); margin: 0 0 4px; }
