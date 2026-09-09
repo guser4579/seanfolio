@@ -61,7 +61,7 @@ export default function Page() {
         <Band
           label="kebab product screens"
           layout="mask"
-          frameRadius="16px"
+          frameRadius="24px"
           images={[
             {
               src: '/media/kebab/kb1.png',
